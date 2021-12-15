@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/82af44d622.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Meme generator</title>
@@ -12,7 +18,7 @@
 
 <body onload="initGallery()">
     <header class="main-header main-layout flex align-center space-between">
-        <div class="logo">MGenerator</div>
+        <div class="logo">memegen</div>
         <nav class="main-nav">
             <ul class="clean-list flex">
                 <li><a onclick="presentGallery()" href="#">gallery</a></li>
@@ -22,6 +28,20 @@
         </nav>
         <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
     </header>
+
+    <section class="search-area">
+
+        <input list="key-words-search" name="key-word-search" id="key-word-search">
+        <p class="key-words inline-block"> <span>dog</span> <span>cat</span> <span>cute</span> <span>baby</span> <span>success</span> <span>funny</span> </p>
+        <datalist id="key-words-search">
+            <option value="dog">
+            <option value="cat">
+            <option value="cute">
+            <option value="baby">
+            <option value="success">
+            <option value="funny">
+        </datalist>
+    </section>
 
     <section class="gallery">
         <!-- <img class="img img-2" src="img/2.jpg" alt="" style="display: none" /> -->
@@ -56,7 +76,9 @@
             </form>
         </section>
     </section>
-
+    <!-- <section class="about">
+        <img src="/img/1.jpg" alt="">
+    </section> -->
 
 
     <script src="js/galleryController.js"></script>
