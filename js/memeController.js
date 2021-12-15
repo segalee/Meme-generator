@@ -53,6 +53,15 @@ function drawTxt(txt, x, y) {
     gCtx.strokeText(txt, x, y);
 }
 
+// function setFillColor(color) {
+//     console.log('color:', color);
+
+// }
+
+function setStrokeColor(color) {
+    console.log('color:', color);
+}
+
 function resizeCanvas() {}
 
 // BETTER USE OF IMG DRAW TO CANVAS

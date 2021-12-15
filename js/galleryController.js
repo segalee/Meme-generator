@@ -20,7 +20,7 @@ function renderGallery() {
     var elGallery = document.querySelector('.gallery');
     var strHTML = '';
     imgs.forEach((img, i) => {
-        strHTML += ` <img class="img img-${i + 1}" src="img/${
+        strHTML += ` <img class="pointer img img-${i + 1}" src="img/${
       i + 1
     }.jpg" alt="" onclick="onImgSelect(${i + 1})" />`;
     });

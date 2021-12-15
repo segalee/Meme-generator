@@ -86,3 +86,22 @@
 .hidden {
     display: none;
 }
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.edit-color-btn {
+    background-color: #e5e5e500;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-color-btn:hover {
+    background-color: #3f3a3a3b;
+}

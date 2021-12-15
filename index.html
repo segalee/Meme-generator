@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/82af44d622.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Meme generator</title>
 </head>
@@ -31,8 +32,16 @@
         <form id="form-editor" onsubmit="onSubmitForm(event)">
             <!-- <label for="text"></label> -->
             <input type="text" name="txt" placeholder="Enter your text" oninput="onChangeLineTxt(this)">
-            <input type="color" id="txtcolor" name="txtcolor" form="formRegister" value="#000000" />
-            <input type="color" id="bgcolor" name="bgcolor" form="formRegister" value="#FFFFFF" />
+
+
+            <div style="position:relative; display:inline-block">
+                <button class="edit-color-btn"><i class="fas fa-font material-icons"></i></button>
+                <input type="color" id="fill" value="#000000" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="setFillColor(this)" />
+            </div>
+            <div style="position:relative; display:inline-block">
+                <button class="edit-color-btn"><i class="fas fa-palette material-icons"></i></button>
+                <input type="color" id="stroke" value="#ffffff" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="setStrokeColor(this)" />
+            </div>
 
 
             <!-- <button>+</button> -->
