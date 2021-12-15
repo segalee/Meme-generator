@@ -21,16 +21,15 @@ function renderMeme() {
     elGallery.classList.add('hidden');
     const elImg = elGallery.querySelector(`.img-${currImgId}`);
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    var currLineIdx = 0;
+    var currLineIdx = getCurrLineIdx();
     var txt = meme.lines[currLineIdx].txt;
     console.log('txt:', txt);
-
     drawTxt(txt, gElCanvas.width / 2, 50);
 }
 
 function onChangeLineTxt(elInput) {
-    var txt = elInput.value;
     console.log('txt:', txt);
+    var txt = elInput.value;
     // drawTxt(txt, gElCanvas.width / 2, 50);
     setLineTxt(txt);
     renderMeme();

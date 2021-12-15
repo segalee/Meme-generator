@@ -30,7 +30,11 @@
     <section class="editor hidden">
         <form id="form-editor" onsubmit="onSubmitForm(event)">
             <!-- <label for="text"></label> -->
-            <input type="text" name="txt" placeholder="Enter your text" onchange="onChangeLineTxt(this)">
+            <input type="text" name="txt" placeholder="Enter your text" oninput="onChangeLineTxt(this)">
+            <input type="color" id="txtcolor" name="txtcolor" form="formRegister" value="#000000" />
+            <input type="color" id="bgcolor" name="bgcolor" form="formRegister" value="#FFFFFF" />
+
+
             <!-- <button>+</button> -->
         </form>
     </section>

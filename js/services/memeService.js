@@ -2,6 +2,7 @@
 
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
+var gCurrLineIdx;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
@@ -47,6 +48,11 @@ function getImgs() {
 
 function getMeme() {
     return gMeme;
+}
+
+function getCurrLineIdx() {
+    gCurrLineIdx = gMeme.selectedLineIdx;
+    return gCurrLineIdx;
 }
 
 function setLineTxt(input) {
