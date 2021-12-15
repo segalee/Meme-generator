@@ -3,6 +3,7 @@
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
 var gCurrLineIdx;
+var gLines;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
@@ -10,7 +11,7 @@ var gMeme = {
     lines: [{
         txt: '',
         size: 50,
-        align: 'left',
+        align: 'center',
         stroke: 'black',
         fill: 'white',
         yAxis: 50,
@@ -44,6 +45,10 @@ function createImg(id, url, keywords) {
     return img;
 }
 
+function getLines() {
+    return (gLines = gMeme.lines);
+}
+
 function getImgs() {
     return gImgs;
 }
@@ -59,19 +64,12 @@ function getCurrLineIdx() {
 
 function setImg(imgId) {
     gMeme.selectedImgId = imgId;
-    console.log('gMeme:', gMeme);
+    // console.log('gMeme:', gMeme);
 }
 
 function setLineTxt(input) {
     gMeme.lines[gCurrLineIdx].txt = input;
     console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
-    // gMeme.selectedLineIdx++;
-    // gMeme.lines.push({
-    //     txt: `${input}`,
-    //     size: 50,
-    //     align: 'center',
-    //     color: 'white',
-    // });
     // gMeme.selectedLineIdx++;
 }
 
@@ -102,4 +100,20 @@ function setTxtDown() {
     const currLine = gMeme.lines[gCurrLineIdx];
     currLine.yAxis += 10;
     return currLine.yAxis;
+}
+
+function setNewLine() {
+    gMeme.selectedLineIdx++;
+    // console.log(gCurrLineIdx);
+    // console.log('gMeme:', gMeme);
+    gMeme.lines.push({
+        txt: '',
+        size: 50,
+        align: 'center',
+        stroke: 'black',
+        fill: 'white',
+        yAxis: 50,
+    });
+    // gMeme.selectedLineIdx++;
+    // console.log('meme.selectedLineIdx:', meme.selectedLineIdx);
 }

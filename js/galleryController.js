@@ -15,8 +15,6 @@ function presentGallery() {
 
 function renderGallery() {
     var imgs = getImgs();
-    console.log('imgs:', imgs);
-
     var elGallery = document.querySelector('.gallery');
     var strHTML = '';
     imgs.forEach((img, i) => {
@@ -24,15 +22,10 @@ function renderGallery() {
       i + 1
     }.jpg" alt="" onclick="onImgSelect(${i + 1})" />`;
     });
-
-    //     strHTML += ` <img class="img img-${i}" src="img/${i}.jpg" alt="" onclick="onImgSelect(${i})" />`;
-
     elGallery.innerHTML = strHTML;
 }
 
 function onImgSelect(imgId) {
-    console.log('imgId:', imgId);
     setImg(imgId);
     renderMeme();
-    // renderMeme(imgId);
 }

@@ -12,22 +12,33 @@ function onSubmitForm(ev) {
 }
 
 function renderMeme() {
+    displayCanvas();
+    const meme = getMeme();
+    var memeLines = getLines();
+    var currLineIdx = getCurrLineIdx();
+    console.log('currLineIdx:', currLineIdx);
+    var txt = meme.lines[currLineIdx].txt;
+    console.log('txt:', txt);
+    const yAxis = meme.lines[currLineIdx].yAxis;
+    memeLines.forEach((line) => {
+        if (currLineIdx === 0) drawTxt(txt, gElCanvas.width / 2, yAxis);
+        else if (currLineIdx === 1)
+            drawTxt(txt, gElCanvas.width / 2, gElCanvas.height - yAxis);
+        else {
+            drawTxt(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+        }
+    });
+}
+
+function displayCanvas() {
     const meme = getMeme();
     var currImgId = meme.selectedImgId;
-    console.log('currImgId:', currImgId);
     const elEditor = document.querySelector('.editor');
-    const elGallery = document.querySelector('.gallery');
     elEditor.classList.remove('hidden');
+    const elGallery = document.querySelector('.gallery');
     elGallery.classList.add('hidden');
     const elImg = elGallery.querySelector(`.img-${currImgId}`);
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    var currLineIdx = getCurrLineIdx();
-    var txt = meme.lines[currLineIdx].txt;
-    console.log('txt:', txt);
-    console.log('currLineIdx:', currLineIdx);
-    console.log('meme.lines[currLineIdx].y:', meme.lines[currLineIdx].yAxis);
-    const yAxis = meme.lines[currLineIdx].yAxis;
-    drawTxt(txt, gElCanvas.width / 2, yAxis);
 }
 
 function onChangeLineTxt(elInput) {
@@ -35,16 +46,12 @@ function onChangeLineTxt(elInput) {
     setLineTxt(txt);
     renderMeme();
     // renderMeme(currImg);
-    // //lower meme txt
-    // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height - 50);
-    // // center meme txt
-    // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height / 2);
 }
 
 function drawTxt(txt, x, y) {
     const meme = getMeme();
     const currLineIdx = getCurrLineIdx();
-    console.log('meme.lines[currLineIdx]:', meme.lines[currLineIdx]);
+    // console.log('meme.lines[currLineIdx]:', meme.lines[currLineIdx]);
     const { fill, stroke, size } = meme.lines[currLineIdx];
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = 'center';
@@ -69,7 +76,7 @@ function drawTxt(txt, x, y) {
 // }
 
 function onValueChange(elInput) {
-    console.log('elInput.name:', elInput.name);
+    // console.log('elInput.name:', elInput.name);
     setValue(elInput);
     renderMeme();
 }
@@ -85,13 +92,11 @@ function onDecreaseTxt() {
 }
 
 function onPositionTxtUp() {
-    console.log('up');
     setTxtUp();
     renderMeme();
 }
 
 function onPositionTxtDown() {
-    console.log('down');
     setTxtDown();
     renderMeme();
 }
@@ -100,6 +105,17 @@ function onSwitchBeteenLines() {
     console.log('switch');
     // setFontSizeSmaller();
     // renderMeme();
+}
+
+function onAddNewLine() {
+    console.log('new line added');
+    // const meme = getMeme();
+    setNewLine();
+    renderMeme();
+    // const currLineIdx =
+    // console.log('meme.selectedLineIdx:', meme.selectedLineIdx);
+
+    // gMeme.selectedLineIdx++;
 }
 
 function resizeCanvas() {}
