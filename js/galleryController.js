@@ -1,6 +1,7 @@
 'use strict';
 
 function initGallery() {
+    createImgs();
     renderGallery();
     initCanvas();
 }
@@ -13,14 +14,25 @@ function presentGallery() {
 }
 
 function renderGallery() {
+    var imgs = getImgs();
+    console.log('imgs:', imgs);
+
     var elGallery = document.querySelector('.gallery');
     var strHTML = '';
-    // [].foreach((val, i) => {
-    //     strHTML += ` <img class="img img-${i}" src="img/${i}.jpg" alt="" onclick="renderMeme(${i})" />`;
-    // });
-    for (let i = 1; i < 19; i++) {
-        strHTML += ` <img class="img img-${i}" src="img/${i}.jpg" alt="" onclick="renderMeme(${i})" />`;
-    }
+    imgs.forEach((img, i) => {
+        strHTML += ` <img class="img img-${i + 1}" src="img/${
+      i + 1
+    }.jpg" alt="" onclick="onImgSelect(${i + 1})" />`;
+    });
+
+    //     strHTML += ` <img class="img img-${i}" src="img/${i}.jpg" alt="" onclick="onImgSelect(${i})" />`;
+
     elGallery.innerHTML = strHTML;
-    console.log('gCurrImg:', gCurrImg);
+}
+
+function onImgSelect(imgId) {
+    console.log('imgId:', imgId);
+    setImg(imgId);
+    renderMeme(imgId);
+    // return imgId;
 }

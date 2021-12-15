@@ -1,7 +1,6 @@
 'use strict';
 var gElCanvas;
 var gCtx;
-var gCurrImg;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
@@ -13,30 +12,34 @@ function onSubmitForm(ev) {
 }
 
 function onValueChange(elInput) {
-    setLineTxt(elInput);
-    renderMeme(gCurrImg);
-}
-
-function renderMeme(i) {
-    gCurrImg = i;
-    console.log('gCurrImg:', gCurrImg);
-    const elEditor = document.querySelector('.editor');
-    elEditor.classList.remove('hidden');
-    const elGallery = document.querySelector('.gallery');
-    elGallery.classList.add('hidden');
-    const meme = getMeme();
-    // const memeImg = meme.selectedImgId;
-    const elImg = elGallery.querySelector(`.img-${gCurrImg}`);
-    const selectedLineIdx = meme.selectedLineIdx;
-    const line = meme.lines[selectedLineIdx];
-    const txt = line.txt;
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    //upper meme txt
+    var txt = elInput.value;
+    console.log('txt:', txt);
     drawTxt(txt, gElCanvas.width / 2, 50);
+    setLineTxt(txt);
+    // renderMeme(currImg);
     // //lower meme txt
     // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height - 50);
     // // center meme txt
     // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+}
+
+function renderMeme(imgId) {
+    var currImg = imgId;
+    console.log('currImg:', currImg);
+    const elEditor = document.querySelector('.editor');
+    const elGallery = document.querySelector('.gallery');
+    elEditor.classList.remove('hidden');
+    elGallery.classList.add('hidden');
+    const elImg = elGallery.querySelector(`.img-${currImg}`);
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+    // const meme = getMeme();
+    // console.log('meme:', meme);
+    // console.log('elImg:', elImg);
+    // const selectedLineIdx = meme.selectedLineIdx;
+    // const line = meme.lines[selectedLineIdx];
+    // console.log('line:', line);
+    // const txt = line.txt;
+    //upper meme txt
 }
 
 function drawTxt(txt, x, y) {
