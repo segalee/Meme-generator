@@ -24,7 +24,10 @@ function renderMeme() {
     var currLineIdx = getCurrLineIdx();
     var txt = meme.lines[currLineIdx].txt;
     console.log('txt:', txt);
-    drawTxt(txt, gElCanvas.width / 2, 50);
+    console.log('currLineIdx:', currLineIdx);
+    console.log('meme.lines[currLineIdx].y:', meme.lines[currLineIdx].yAxis);
+    const yAxis = meme.lines[currLineIdx].yAxis;
+    drawTxt(txt, gElCanvas.width / 2, yAxis);
 }
 
 function onChangeLineTxt(elInput) {
@@ -83,14 +86,14 @@ function onDecreaseTxt() {
 
 function onPositionTxtUp() {
     console.log('up');
-    // setTxtUp();
-    // renderMeme();
+    setTxtUp();
+    renderMeme();
 }
 
 function onPositionTxtDown() {
     console.log('down');
-    // setTxtDown();
-    // renderMeme();
+    setTxtDown();
+    renderMeme();
 }
 
 function onSwitchBeteenLines() {

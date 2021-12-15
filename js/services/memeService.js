@@ -85,11 +85,21 @@ function setValue(input) {
 function setFontSizeLarger() {
     const currLine = gMeme.lines[gCurrLineIdx];
     currLine.size += 10;
-    console.log(gMeme);
 }
 
 function setFontSizeSmaller() {
     const currLine = gMeme.lines[gCurrLineIdx];
     currLine.size -= 10;
-    console.log(gMeme);
+}
+
+function setTxtUp() {
+    const currLine = gMeme.lines[gCurrLineIdx];
+    currLine.yAxis -= 10;
+    return currLine.yAxis;
+}
+
+function setTxtDown() {
+    const currLine = gMeme.lines[gCurrLineIdx];
+    currLine.yAxis += 10;
+    return currLine.yAxis;
 }
