@@ -49,20 +49,20 @@ function getMeme() {
     return gMeme;
 }
 
+function setLineTxt(input) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = input;
+    console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
+    // gMeme.selectedLineIdx++;
+    // gMeme.lines.push({
+    //     txt: `${input}`,
+    //     size: 50,
+    //     align: 'center',
+    //     color: 'white',
+    // });
+    // gMeme.selectedLineIdx++;
+}
+
 function setImg(imgId) {
     gMeme.selectedImgId = imgId;
     console.log('gMeme:', gMeme);
-}
-
-function setLineTxt(txt) {
-    // const value = elInput.value;
-    // const name = elInput.name;
-    // gMeme.lines[gMeme.selectedLineIdx][name] = value;
-    gMeme.lines.push({
-        txt: `${txt}`,
-        size: 30,
-        align: 'center',
-        color: 'white',
-    });
-    gMeme.selectedLineIdx++;
 }

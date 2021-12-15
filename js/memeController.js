@@ -11,35 +11,34 @@ function onSubmitForm(ev) {
     ev.preventDefault();
 }
 
-function onValueChange(elInput) {
+function renderMeme() {
+    const meme = getMeme();
+    var currImgId = meme.selectedImgId;
+    console.log('currImgId:', currImgId);
+    const elEditor = document.querySelector('.editor');
+    const elGallery = document.querySelector('.gallery');
+    elEditor.classList.remove('hidden');
+    elGallery.classList.add('hidden');
+    const elImg = elGallery.querySelector(`.img-${currImgId}`);
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+    var currLineIdx = 0;
+    var txt = meme.lines[currLineIdx].txt;
+    console.log('txt:', txt);
+
+    drawTxt(txt, gElCanvas.width / 2, 50);
+}
+
+function onChangeLineTxt(elInput) {
     var txt = elInput.value;
     console.log('txt:', txt);
-    drawTxt(txt, gElCanvas.width / 2, 50);
+    // drawTxt(txt, gElCanvas.width / 2, 50);
     setLineTxt(txt);
+    renderMeme();
     // renderMeme(currImg);
     // //lower meme txt
     // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height - 50);
     // // center meme txt
     // drawTxt(txt, gElCanvas.width / 2, gElCanvas.height / 2);
-}
-
-function renderMeme(imgId) {
-    var currImg = imgId;
-    console.log('currImg:', currImg);
-    const elEditor = document.querySelector('.editor');
-    const elGallery = document.querySelector('.gallery');
-    elEditor.classList.remove('hidden');
-    elGallery.classList.add('hidden');
-    const elImg = elGallery.querySelector(`.img-${currImg}`);
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    // const meme = getMeme();
-    // console.log('meme:', meme);
-    // console.log('elImg:', elImg);
-    // const selectedLineIdx = meme.selectedLineIdx;
-    // const line = meme.lines[selectedLineIdx];
-    // console.log('line:', line);
-    // const txt = line.txt;
-    //upper meme txt
 }
 
 function drawTxt(txt, x, y) {

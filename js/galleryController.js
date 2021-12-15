@@ -33,6 +33,6 @@ function renderGallery() {
 function onImgSelect(imgId) {
     console.log('imgId:', imgId);
     setImg(imgId);
-    renderMeme(imgId);
-    // return imgId;
+    renderMeme();
+    // renderMeme(imgId);
 }
