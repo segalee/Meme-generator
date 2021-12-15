@@ -1,24 +1,33 @@
 'use strict';
 var gElCanvas;
 var gCtx;
+var gCurrImg;
 
-function init() {
+function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
-    console.log('hello');
-    // renderMeme(`../memeImgs (square)/1.png`);
-    renderMeme();
 }
 
-function renderMeme() {
-    const meme = getMeme();
-    console.log('meme:', meme);
-    const memeImg = meme.selectedImgId;
-    console.log('memeImg:', memeImg);
+function onSubmitForm(ev) {
+    ev.preventDefault();
+}
+
+function onValueChange(elInput) {
+    setLineTxt(elInput);
+    renderMeme(gCurrImg);
+}
+
+function renderMeme(i) {
+    gCurrImg = i;
+    console.log('gCurrImg:', gCurrImg);
+    const elEditor = document.querySelector('.editor');
+    elEditor.classList.remove('hidden');
     const elGallery = document.querySelector('.gallery');
-    const elImg = elGallery.querySelector(`.img-${memeImg}`);
+    elGallery.classList.add('hidden');
+    const meme = getMeme();
+    // const memeImg = meme.selectedImgId;
+    const elImg = elGallery.querySelector(`.img-${gCurrImg}`);
     const selectedLineIdx = meme.selectedLineIdx;
-    console.log(selectedLineIdx);
     const line = meme.lines[selectedLineIdx];
     const txt = line.txt;
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -42,6 +51,8 @@ function drawTxt(txt, x, y) {
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
 }
+
+function resizeCanvas() {}
 
 // BETTER USE OF IMG DRAW TO CANVAS
 // function renderMeme(num) {

@@ -6,17 +6,19 @@ var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [{
-        txt: 'I sometimes eat Falafel',
+        txt: '',
         size: 50,
         align: 'left',
         color: 'red',
     }, ],
 };
 
-function setLineTxt() {
-    return gLineTxt;
-}
-
 function getMeme() {
     return gMeme;
+}
+
+function setLineTxt(elInput) {
+    const value = elInput.value;
+    const name = elInput.name;
+    gMeme.lines[gMeme.selectedLineIdx][name] = value;
 }

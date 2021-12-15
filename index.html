@@ -9,40 +9,35 @@
     <title>Meme generator</title>
 </head>
 
-<body onload="init()">
+<body onload="initGallery()">
     <header class="main-header main-layout flex align-center space-between">
         <div class="logo">MGenerator</div>
         <nav class="main-nav">
             <ul class="clean-list flex">
-                <li><a href="#">gallery</a></li>
+                <li><a onclick="presentGallery()" href="#">gallery</a></li>
                 <li><a href="#">my gallery</a></li>
                 <li><a href="#">about</a></li>
-
             </ul>
         </nav>
         <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
     </header>
 
     <section class="gallery">
-        <img class="img img-1" src="img/1.jpg" alt="" style="display: none" />
-        <img class="img img-2" src="img/2.jpg" alt="" style="display: none" />
-        <!-- <img src="meme-imgs (square)/1.jpg" alt="" style="display: none" />
-		<img src="meme-imgs (square)/1.jpg" alt="" style="display: none" />
-		<img src="meme-imgs (square)/1.jpg" alt="" style="display: none" />
-		<img src="meme-imgs (square)/1.jpg" alt="" style="display: none" /> -->
-
-
-
-        <canvas id="my-canvas" height="500" width="500" onclick="draw(event)">
-</canvas>
-
-
-
+        <!-- <img class="img img-2" src="img/2.jpg" alt="" style="display: none" /> -->
     </section>
-    <section class="editor"></section>
+    <canvas id="my-canvas" height="500" width="500" onclick="draw(event)">
+</canvas>
+    <section class="editor hidden">
+        <form id="form-editor" onsubmit="onSubmitForm(event)">
+            <!-- <label for="text"></label> -->
+            <input type="text" name="txt" placeholder="Enter your text" onchange="onValueChange(this)">
+            <!-- <button>+</button> -->
+        </form>
+    </section>
 
 
 
+    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/services/memeService.js"></script>
 </body>
