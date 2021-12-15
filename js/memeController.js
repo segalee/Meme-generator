@@ -42,24 +42,39 @@ function onChangeLineTxt(elInput) {
 
 function drawTxt(txt, x, y) {
     const meme = getMeme();
+    const currLineIdx = getCurrLineIdx();
+    console.log('meme.lines[currLineIdx]:', meme.lines[currLineIdx]);
+
+    const fill = meme.lines[currLineIdx].fill;
+    const stroke = meme.lines[currLineIdx].stroke;
+    // const baseline = meme.lines[currLineIdx].baseline;
+
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = 'center';
     const fontSize = meme.lines[0].size;
     gCtx.font = `${fontSize}px impact`;
     gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = 'white';
+    gCtx.strokeStyle = stroke;
+    gCtx.fillStyle = fill;
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
 }
 
-// function setFillColor(color) {
-//     console.log('color:', color);
-
+// function onChangeFillColor(elInput) {
+//     // console.log('color:', color);
+//     // console.log('color.value:', color.value);
+//     setFillColor(elInput);
 // }
 
-function setStrokeColor(color) {
-    console.log('color:', color);
+// function onChangeStrokeColor(elInput) {
+//     // console.log('color:', color);
+//     // console.log('color.value:', color.value);
+//     setStrokeColor(elInput);
+// }
+
+function onValueChange(elInput) {
+    console.log('elInput.name:', elInput.name);
+    setValue(elInput);
 }
 
 function resizeCanvas() {}

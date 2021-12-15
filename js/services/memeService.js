@@ -11,7 +11,8 @@ var gMeme = {
         txt: '',
         size: 50,
         align: 'left',
-        color: 'red',
+        stroke: 'black',
+        fill: 'white',
     }, ],
 };
 
@@ -55,8 +56,13 @@ function getCurrLineIdx() {
     return gCurrLineIdx;
 }
 
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId;
+    console.log('gMeme:', gMeme);
+}
+
 function setLineTxt(input) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = input;
+    gMeme.lines[gCurrLineIdx].txt = input;
     console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
     // gMeme.selectedLineIdx++;
     // gMeme.lines.push({
@@ -68,7 +74,9 @@ function setLineTxt(input) {
     // gMeme.selectedLineIdx++;
 }
 
-function setImg(imgId) {
-    gMeme.selectedImgId = imgId;
-    console.log('gMeme:', gMeme);
+function setValue(input) {
+    const value = input.value;
+    const name = input.name;
+    const currLine = gMeme.lines[gCurrLineIdx];
+    currLine[name] = value;
 }
