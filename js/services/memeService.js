@@ -13,6 +13,7 @@ var gMeme = {
         align: 'left',
         stroke: 'black',
         fill: 'white',
+        yAxis: 50,
     }, ],
 };
 
@@ -79,4 +80,16 @@ function setValue(input) {
     const name = input.name;
     const currLine = gMeme.lines[gCurrLineIdx];
     currLine[name] = value;
+}
+
+function setFontSizeLarger() {
+    const currLine = gMeme.lines[gCurrLineIdx];
+    currLine.size += 10;
+    console.log(gMeme);
+}
+
+function setFontSizeSmaller() {
+    const currLine = gMeme.lines[gCurrLineIdx];
+    currLine.size -= 10;
+    console.log(gMeme);
 }

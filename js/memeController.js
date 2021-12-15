@@ -28,9 +28,7 @@ function renderMeme() {
 }
 
 function onChangeLineTxt(elInput) {
-    console.log('txt:', txt);
     var txt = elInput.value;
-    // drawTxt(txt, gElCanvas.width / 2, 50);
     setLineTxt(txt);
     renderMeme();
     // renderMeme(currImg);
@@ -44,15 +42,10 @@ function drawTxt(txt, x, y) {
     const meme = getMeme();
     const currLineIdx = getCurrLineIdx();
     console.log('meme.lines[currLineIdx]:', meme.lines[currLineIdx]);
-
-    const fill = meme.lines[currLineIdx].fill;
-    const stroke = meme.lines[currLineIdx].stroke;
-    // const baseline = meme.lines[currLineIdx].baseline;
-
+    const { fill, stroke, size } = meme.lines[currLineIdx];
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = 'center';
-    const fontSize = meme.lines[0].size;
-    gCtx.font = `${fontSize}px impact`;
+    gCtx.font = `${size}px impact`;
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = stroke;
     gCtx.fillStyle = fill;
@@ -75,6 +68,35 @@ function drawTxt(txt, x, y) {
 function onValueChange(elInput) {
     console.log('elInput.name:', elInput.name);
     setValue(elInput);
+    renderMeme();
+}
+
+function onIncreaseTxt() {
+    setFontSizeLarger();
+    renderMeme();
+}
+
+function onDecreaseTxt() {
+    setFontSizeSmaller();
+    renderMeme();
+}
+
+function onPositionTxtUp() {
+    console.log('up');
+    // setTxtUp();
+    // renderMeme();
+}
+
+function onPositionTxtDown() {
+    console.log('down');
+    // setTxtDown();
+    // renderMeme();
+}
+
+function onSwitchBeteenLines() {
+    console.log('switch');
+    // setFontSizeSmaller();
+    // renderMeme();
 }
 
 function resizeCanvas() {}
