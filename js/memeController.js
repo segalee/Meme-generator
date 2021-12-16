@@ -98,6 +98,24 @@ function onDeleteLine() {
     renderMeme();
 }
 
+function onAlignLeft() {
+    console.log('align Left');
+    alignLeft();
+    renderMeme();
+}
+
+function onAlignCenter() {
+    console.log('align Center');
+    alignCenter();
+    renderMeme();
+}
+
+function onAlignRight() {
+    console.log('align right');
+    alignRight();
+    renderMeme();
+}
+
 function resizeCanvas() {}
 
 // BETTER USE OF IMG DRAW TO CANVAS

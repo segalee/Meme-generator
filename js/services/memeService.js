@@ -4,7 +4,7 @@ var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
 var gCurrLineIdx;
 var gCurrLineId = 0;
-var gYAxis = 50;
+var gYAxis = 70;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
@@ -118,7 +118,7 @@ function setNewLine() {
         gMeme.lines.push({
             ...line,
             // id: gCurrLineId,
-            yAxis: getCanvasHeight() - 50,
+            yAxis: getCanvasHeight() - 30,
         });
     }
 }
@@ -127,6 +127,18 @@ function deleteLine() {
     const currIdx = gMeme.selectedLineIdx;
     gMeme.lines.splice(currIdx, 1);
     // console.log('gMeme:', gMeme);
+}
+
+function alignLeft() {
+    console.log('align left');
+}
+
+function alignCenter() {
+    console.log('align center');
+}
+
+function alignRight() {
+    console.log('align right');
 }
 
 // function getCurrLineIdx() {
