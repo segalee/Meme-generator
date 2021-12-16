@@ -4,12 +4,13 @@ var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
 var gCurrLineIdx;
 var gLines;
+var gCurrLineId = 0;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [{
-        id: 0,
+        id: gCurrLineId,
         txt: '',
         size: 50,
         align: 'center',
@@ -104,12 +105,13 @@ function setTxtDown() {
 }
 
 function setNewLine() {
-    let currLineId = gMeme.selectedLineIdx;
+    // let currLineId = gMeme.selectedLineIdx;
+    gCurrLineId++;
     // gMeme.selectedLineIdx++;
     // console.log(gCurrLineIdx);
     // console.log('gMeme:', gMeme);
     gMeme.lines.push({
-        id: currLineId++,
+        id: gCurrLineId,
         txt: '',
         size: 50,
         align: 'center',
