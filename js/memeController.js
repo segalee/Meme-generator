@@ -11,30 +11,17 @@ function onSubmitForm(ev) {
     ev.preventDefault();
 }
 
+function getCanvasHeight() {
+    return gElCanvas.height;
+}
+
 function renderMeme() {
     displayCanvas();
     const meme = getMeme();
     var memeLines = meme.lines;
     memeLines.forEach((line) => {
-        const currTxt = line.txt;
-        const yAxis = line.yAxis;
-        const lineId = line.id;
-        console.log('line:', line);
-        if (lineId === 0) {
-            drawTxt(currTxt, gElCanvas.width / 2, yAxis);
-        } else if (lineId === 1) {
-            drawTxt(currTxt, gElCanvas.width / 2, gElCanvas.height - yAxis);
-        } else if (lineId !== 0 && lineId !== 1) {
-            drawTxt(currTxt, gElCanvas.width / 2, gElCanvas.height / 2);
-        }
+        drawTxt(line);
     });
-    // var currLineIdx = meme.selectedLineIdx;
-    // var memeLines = getLines();
-    // var currLineIdx = getCurrLineIdx();
-    // console.log('currLineIdx:', currLineIdx);
-    // var txt = memeLines[currLineIdx].txt;
-    // console.log('txt:', txt);
-    // const yAxis = memeLines[currLineIdx].yAxis;
 }
 
 function displayCanvas() {
@@ -52,39 +39,25 @@ function onChangeLineTxt(elInput) {
     var txt = elInput.value;
     setLineTxt(txt);
     renderMeme();
-    // renderMeme(currImg);
 }
 
-function drawTxt(txt, x, y) {
+function drawTxt(line) {
     const meme = getMeme();
-    const currLineIdx = getCurrLineIdx();
-    // console.log('meme.lines[currLineIdx]:', meme.lines[currLineIdx]);
-    const { fill, stroke, size } = meme.lines[currLineIdx];
-    gCtx.textBaseline = 'middle';
-    gCtx.textAlign = 'center';
-    gCtx.font = `${size}px impact`;
+    console.log(line);
+    if (!line) return;
+    const { txt, fill, stroke, size, align, yAxis, fontFamily } = line;
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = stroke;
     gCtx.fillStyle = fill;
-    gCtx.fillText(txt, x, y);
-    gCtx.strokeText(txt, x, y);
+    gCtx.font = `${size}px ${fontFamily}`;
+    gCtx.textAlign = align;
+    gCtx.fillText(txt, gElCanvas.width / 2, yAxis);
+    gCtx.strokeText(txt, gElCanvas.width / 2, yAxis);
 }
 
-// function onChangeFillColor(elInput) {
-//     // console.log('color:', color);
-//     // console.log('color.value:', color.value);
-//     setFillColor(elInput);
-// }
-
-// function onChangeStrokeColor(elInput) {
-//     // console.log('color:', color);
-//     // console.log('color.value:', color.value);
-//     setStrokeColor(elInput);
-// }
-
-function onValueChange(elInput) {
+function onColorChange(elInput) {
     // console.log('elInput.name:', elInput.name);
-    setValue(elInput);
+    setColor(elInput);
     renderMeme();
 }
 
@@ -116,13 +89,9 @@ function onSwitchBeteenLines() {
 
 function onAddNewLine() {
     console.log('new line added');
-    // const meme = getMeme();
+    document.querySelector(`[name=txt]`).value = '';
     setNewLine();
     renderMeme();
-    // const currLineIdx =
-    // console.log('meme.selectedLineIdx:', meme.selectedLineIdx);
-
-    // gMeme.selectedLineIdx++;
 }
 
 function resizeCanvas() {}

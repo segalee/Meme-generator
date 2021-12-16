@@ -32,7 +32,7 @@
     <section class="search-area">
 
         <input list="key-words-search" name="key-word-search" id="key-word-search">
-        <p class="key-words inline-block"> <span>dog</span> <span>cat</span> <span>cute</span> <span>baby</span> <span>success</span> <span>funny</span> </p>
+        <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#">funny</a> </p>
         <datalist id="key-words-search">
             <option value="dog">
             <option value="cat">
@@ -57,11 +57,11 @@
                 </div>
                 <div style="position:relative; display:inline-block">
                     <button class="edit-btn"><i class="fas fa-font material-icons"></i></button>
-                    <input type="color" name="stroke" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onValueChange(this)" />
+                    <input type="color" name="stroke" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
                 </div>
                 <div style="position:relative; display:inline-block">
                     <button class="edit-btn"><i class="fas fa-palette material-icons"></i></button>
-                    <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onValueChange(this)" />
+                    <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
                 </div>
 
                 <button onclick="onIncreaseTxt()" class="edit-btn"><i class="fas fa-font">+</i></button>
