@@ -42,8 +42,6 @@ function onChangeLineTxt(elInput) {
 }
 
 function drawTxt(line) {
-    const meme = getMeme();
-    console.log(line);
     if (!line) return;
     const { txt, fill, stroke, size, align, yAxis, fontFamily } = line;
     gCtx.lineWidth = 2;
@@ -91,6 +89,12 @@ function onAddNewLine() {
     console.log('new line added');
     document.querySelector(`[name=txt]`).value = '';
     setNewLine();
+    renderMeme();
+}
+
+function onDeleteLine() {
+    console.log('line deleted');
+    deleteLine();
     renderMeme();
 }
 

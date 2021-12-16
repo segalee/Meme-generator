@@ -56,22 +56,13 @@ function createImg(id, url, keywords) {
     return img;
 }
 
-function getCurrLineIdx() {
-    gCurrLineIdx = gMeme.selectedLineIdx;
-    return gCurrLineIdx;
-}
-
-function getCurrLineId() {
-    return gCurrLineId;
-}
-
 function setImg(imgId) {
     gMeme.selectedImgId = imgId;
 }
 
 function setLineTxt(input) {
     gMeme.lines[gCurrLineId].txt = input;
-    console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
+    // console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
 }
 
 function setColor(input) {
@@ -108,28 +99,41 @@ function setTxtDown() {
 function setNewLine() {
     gCurrLineId++;
     gMeme.selectedLineIdx++;
+    const line = {
+        id: gCurrLineId,
+        txt: '',
+        size: 50,
+        align: 'center',
+        stroke: 'black',
+        fill: 'white',
+        fontFamily: 'impact',
+    };
     if (gMeme.selectedLineIdx !== 1) {
         gMeme.lines.push({
-            id: gCurrLineId,
-            txt: '',
-            size: 50,
-            align: 'center',
-            stroke: 'black',
-            fill: 'white',
+            ...line,
+            // id: gCurrLineId,
             yAxis: getCanvasHeight() / 2,
-            fontFamily: 'impact',
         });
     } else {
-        // gMeme.lines.yAxis = getCanvasHeight() - 50;
         gMeme.lines.push({
-            id: gCurrLineId,
-            txt: '',
-            size: 50,
-            align: 'center',
-            stroke: 'black',
-            fill: 'white',
+            ...line,
+            // id: gCurrLineId,
             yAxis: getCanvasHeight() - 50,
-            fontFamily: 'impact',
         });
     }
 }
+
+function deleteLine() {
+    const currIdx = gMeme.selectedLineIdx;
+    gMeme.lines.splice(currIdx, 1);
+    // console.log('gMeme:', gMeme);
+}
+
+// function getCurrLineIdx() {
+//     gCurrLineIdx = gMeme.selectedLineIdx;
+//     return gCurrLineIdx;
+// }
+
+// function getCurrLineId() {
+//     return gCurrLineId;
+// }
