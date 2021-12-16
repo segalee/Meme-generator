@@ -71,9 +71,10 @@ html {
     color: #000;
 }
 
-.main-nav li {
+
+/* .main-nav li {
     border-bottom: 1px solid #e5e5e5;
-}
+} */
 
 .main-nav a {
     display: block;
@@ -83,13 +84,15 @@ html {
 
 .main-header .main-nav a:hover {
     text-decoration: none;
-    background-color: #eee;
-    color: inherit;
+    color: #e3e3e3;
+    /* background-color: #eee; */
+    /* color: inherit; */
 }
 
 .canvas-container {
     display: flex;
-    max-width: 100%;
+    max-width: 500px;
+    max-height: 500px;
     /* grid-template-columns: ; */
 }
 
@@ -111,6 +114,29 @@ html {
     max-width: 160px;
     max-height: 160px;
     border-radius: 50%;
+}
+
+.editor {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr;
+    grid-template-areas: "txt txt txt txt txt" ". changeline changeline changeline ." "font font font font font" "ffamily ffamily ffamily colors colors" "stickers stickers stickers stickers stickers" ". . . share share";
+}
+
+.line-input {
+    grid-area: txt;
+}
+
+.change-line-btn {
+    grid-area: changeline;
+}
+
+.font {
+    grid-area: font;
+}
+
+.color-btn {
+    grid-area: colors;
 }
 
 

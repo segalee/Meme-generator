@@ -2,9 +2,9 @@
 
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
-var gCurrLineIdx;
+var gCurrLine;
 var gCurrLineId = 0;
-var gYAxis = 70;
+var gYAxis = 50;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
@@ -17,6 +17,7 @@ var gMeme = {
         stroke: 'black',
         fill: 'white',
         yAxis: gYAxis,
+        xAxis: 250,
         fontFamily: 'impact',
     }, ],
 };
@@ -61,20 +62,21 @@ function setImg(imgId) {
 }
 
 function setLineTxt(input) {
-    gMeme.lines[gCurrLineId].txt = input;
+    // console.log(gCurrLineId);
+    gMeme.lines[gMeme.selectedLineIdx].txt = input;
     // console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
 }
 
 function setColor(input) {
     const color = input.value;
     const fillOrStroke = input.name;
-    const currLine = gMeme.lines[gCurrLineId];
+    const currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine[fillOrStroke] = color;
 }
 
 function setFontSizeLarger() {
     const currLine = gMeme.lines[gCurrLineId];
-    console.log('currLine:', currLine);
+    // console.log('currLine:', currLine);
 
     currLine.size += 10;
 }
@@ -98,6 +100,7 @@ function setTxtDown() {
 
 function setNewLine() {
     gCurrLineId++;
+    // gCurrLine++;
     gMeme.selectedLineIdx++;
     const line = {
         id: gCurrLineId,
@@ -106,20 +109,36 @@ function setNewLine() {
         align: 'center',
         stroke: 'black',
         fill: 'white',
+        xAxis: 250,
         fontFamily: 'impact',
     };
     if (gMeme.selectedLineIdx !== 1) {
         gMeme.lines.push({
             ...line,
-            // id: gCurrLineId,
+            id: gCurrLineId,
             yAxis: getCanvasHeight() / 2,
         });
     } else {
         gMeme.lines.push({
             ...line,
-            // id: gCurrLineId,
-            yAxis: getCanvasHeight() - 30,
+            id: gCurrLineId,
+            yAxis: getCanvasHeight() - gYAxis,
         });
+    }
+}
+
+function switchBeteenLines() {
+    // console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
+    const length = gMeme.lines.length;
+    var currIdx = gMeme.selectedLineIdx;
+    if (length === 0) {
+        console.log('1');
+        return;
+    }
+    if (currIdx === length - 1) {
+        gMeme.selectedLineIdx = 0;
+    } else {
+        gMeme.selectedLineIdx++;
     }
 }
 
@@ -130,28 +149,32 @@ function deleteLine() {
 }
 
 function alignLeft() {
-    console.log('align left');
     const currLine = gMeme.lines[gCurrLineId];
     currLine.align = 'left';
 }
 
 function alignCenter() {
-    console.log('align center');
     const currLine = gMeme.lines[gCurrLineId];
     currLine.align = 'center';
 }
 
 function alignRight() {
-    console.log('align right');
     const currLine = gMeme.lines[gCurrLineId];
     currLine.align = 'right';
 }
 
-// function getCurrLineIdx() {
-//     gCurrLineIdx = gMeme.selectedLineIdx;
-//     return gCurrLineIdx;
-// }
+function getCurrLineIdx() {
+    gCurrLine = gMeme.selectedLineIdx;
+    return gCurrLine;
+}
 
 // function getCurrLineId() {
 //     return gCurrLineId;
 // }
+
+function changeTxtPos(width, height) {
+    gMeme.lines.forEach((line) => {
+        line.xAxis = width / 2;
+        if (line.yAxis > height) line.yAxis = height - 20;
+    });
+}

@@ -11,6 +11,7 @@ function presentGallery() {
     var elEditor = document.querySelector('.editor');
     elGallery.classList.remove('hidden');
     elEditor.classList.add('hidden');
+    // hideCanvas();
 }
 
 function renderGallery() {

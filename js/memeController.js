@@ -1,10 +1,13 @@
 'use strict';
 var gElCanvas;
 var gCtx;
+var gLineIdx;
+var gFocusOntxt;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
+    gLineIdx = getCurrLineIdx();
 }
 
 function onSubmitForm(ev) {
@@ -21,6 +24,8 @@ function renderMeme() {
     var memeLines = meme.lines;
     memeLines.forEach((line) => {
         drawTxt(line);
+        var selectedLine = meme.lines[meme.selectedLineIdx];
+        document.querySelector(`[name=txt]`).value = selectedLine.txt;
     });
 }
 
@@ -33,6 +38,11 @@ function displayCanvas() {
     elGallery.classList.add('hidden');
     const elImg = elGallery.querySelector(`.img-${currImgId}`);
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+}
+
+function hideCanvas() {
+    document.querySelector('.editor').classList.add('hidden');
+    gElCanvas.classList.add('hidden');
 }
 
 function onChangeLineTxt(elInput) {
@@ -81,42 +91,47 @@ function onPositionTxtDown() {
 
 function onSwitchBeteenLines() {
     console.log('switch');
-    // setFontSizeSmaller();
-    // renderMeme();
+    // gFocusOntxt = true;
+    switchBeteenLines();
+    renderMeme();
 }
 
 function onAddNewLine() {
-    console.log('new line added');
+    // console.log('new line added');
     document.querySelector(`[name=txt]`).value = '';
     setNewLine();
     renderMeme();
 }
 
 function onDeleteLine() {
-    console.log('line deleted');
     deleteLine();
     renderMeme();
 }
 
 function onAlignLeft() {
-    console.log('align Left');
     alignLeft();
     renderMeme();
 }
 
 function onAlignCenter() {
-    console.log('align Center');
     alignCenter();
     renderMeme();
 }
 
 function onAlignRight() {
-    console.log('align right');
     alignRight();
     renderMeme();
 }
 
-function resizeCanvas() {}
+function resizeCanvas() {
+    const meme = getMeme();
+    var currImgId = meme.selectedImgId;
+    const elImg = elGallery.querySelector(`.img-${currImgId}`);
+    var ratio = elImg.width / elImg.height;
+    gElCanvas.width = 500;
+    gElCanvas.height = gElCanvas.width / ratio;
+    changeTxtPos(gElCanvas.width, gElCanvas.height);
+}
 
 // BETTER USE OF IMG DRAW TO CANVAS
 // function renderMeme(num) {
