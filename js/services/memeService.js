@@ -9,6 +9,7 @@ var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [{
+        id: 0,
         txt: '',
         size: 50,
         align: 'center',
@@ -103,10 +104,12 @@ function setTxtDown() {
 }
 
 function setNewLine() {
-    gMeme.selectedLineIdx++;
+    let currLineId = gMeme.selectedLineIdx;
+    // gMeme.selectedLineIdx++;
     // console.log(gCurrLineIdx);
     // console.log('gMeme:', gMeme);
     gMeme.lines.push({
+        id: currLineId++,
         txt: '',
         size: 50,
         align: 'center',
@@ -114,6 +117,8 @@ function setNewLine() {
         fill: 'white',
         yAxis: 50,
     });
+    gMeme.selectedLineIdx++;
+
     // gMeme.selectedLineIdx++;
     // console.log('meme.selectedLineIdx:', meme.selectedLineIdx);
 }

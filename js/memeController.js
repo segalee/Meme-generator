@@ -14,20 +14,27 @@ function onSubmitForm(ev) {
 function renderMeme() {
     displayCanvas();
     const meme = getMeme();
-    var memeLines = getLines();
-    var currLineIdx = getCurrLineIdx();
-    console.log('currLineIdx:', currLineIdx);
-    var txt = meme.lines[currLineIdx].txt;
-    console.log('txt:', txt);
-    const yAxis = meme.lines[currLineIdx].yAxis;
+    var memeLines = meme.lines;
     memeLines.forEach((line) => {
-        if (currLineIdx === 0) drawTxt(txt, gElCanvas.width / 2, yAxis);
-        else if (currLineIdx === 1)
-            drawTxt(txt, gElCanvas.width / 2, gElCanvas.height - yAxis);
-        else {
-            drawTxt(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+        const currTxt = line.txt;
+        const yAxis = line.yAxis;
+        const lineId = line.id;
+        console.log('line:', line);
+        if (lineId === 0) {
+            drawTxt(currTxt, gElCanvas.width / 2, yAxis);
+        } else if (lineId === 1) {
+            drawTxt(currTxt, gElCanvas.width / 2, gElCanvas.height - yAxis);
+        } else if (lineId !== 0 && lineId !== 1) {
+            drawTxt(currTxt, gElCanvas.width / 2, gElCanvas.height / 2);
         }
     });
+    // var currLineIdx = meme.selectedLineIdx;
+    // var memeLines = getLines();
+    // var currLineIdx = getCurrLineIdx();
+    // console.log('currLineIdx:', currLineIdx);
+    // var txt = memeLines[currLineIdx].txt;
+    // console.log('txt:', txt);
+    // const yAxis = memeLines[currLineIdx].yAxis;
 }
 
 function displayCanvas() {
