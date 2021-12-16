@@ -131,14 +131,20 @@ function deleteLine() {
 
 function alignLeft() {
     console.log('align left');
+    const currLine = gMeme.lines[gCurrLineId];
+    currLine.align = 'left';
 }
 
 function alignCenter() {
     console.log('align center');
+    const currLine = gMeme.lines[gCurrLineId];
+    currLine.align = 'center';
 }
 
 function alignRight() {
     console.log('align right');
+    const currLine = gMeme.lines[gCurrLineId];
+    currLine.align = 'right';
 }
 
 // function getCurrLineIdx() {
