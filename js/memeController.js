@@ -25,7 +25,8 @@ function renderMeme() {
     memeLines.forEach((line) => {
         drawTxt(line);
         var selectedLine = meme.lines[meme.selectedLineIdx];
-        document.querySelector(`[name=txt]`).value = selectedLine.txt;
+        var txtVal = selectedLine.txt ? selectedLine.txt : '';
+        document.querySelector(`[name=txt]`).value = txtVal;
     });
 }
 
@@ -91,7 +92,6 @@ function onPositionTxtDown() {
 
 function onSwitchBeteenLines() {
     console.log('switch');
-    // gFocusOntxt = true;
     switchBeteenLines();
     renderMeme();
 }
@@ -121,6 +121,14 @@ function onAlignCenter() {
 function onAlignRight() {
     alignRight();
     renderMeme();
+}
+
+function onSaveMeme() {
+    console.log('save');
+    saveMeme();
+    const data = gElCanvas.toDataURL();
+    saveImg(data);
+    //TODO -- ADD REDIRECT TO SAVED MEMES
 }
 
 function resizeCanvas() {
