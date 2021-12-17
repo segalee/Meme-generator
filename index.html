@@ -17,22 +17,24 @@
 </head>
 
 <body onload="initGallery()">
-    <header class="main-header main-layout flex align-center space-between">
+    <!-- <header class="main-header main-layout"> -->
+    <nav class="main-nav flex align-center space-between">
         <div class="logo">memegen</div>
-        <nav class="main-nav">
-            <ul class="clean-list flex">
-                <li><a onclick="presentGallery()" href="#">gallery</a></li>
-                <li><a href="#">my gallery</a></li>
-                <li><a href="#">about</a></li>
-            </ul>
-        </nav>
-        <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
-    </header>
+        <ul class="flex">
+            <li class="clean-list"><a onclick="presentGallery()" href="#">gallery</a></li>
+            <span>|</span>
+            <li class="clean-list"><a href="#">my gallery</a></li>
+            <span>|</span>
+            <li class="clean-list"><a href="#">about</a></li>
+        </ul>
+    </nav>
+    <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
+    <!-- </header> -->
 
     <section class="search-area">
 
-        <input list="key-words-search" name="key-word-search" id="key-word-search">
-        <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#">funny</a> </p>
+        <input list="key-words-search" name="key-word-search" id="key-word-search" placeholder="Enter search keyword"><img class="search-icon" src="icons/search-icon.png" alt="">
+        <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a class="medium" href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#" class="large">funny</a> <a href="#" class="medium">politics</a> </p><a class="search-more" href="#">more...</a>
         <datalist id="key-words-search">
             <option value="dog">
             <option value="cat">
@@ -43,53 +45,64 @@
         </datalist>
     </section>
 
-    <section class="gallery">
+    <section class="gallery-section">
+        <div class="gallery"></div>
         <!-- <img class="img img-2" src="img/2.jpg" alt="" style="display: none" /> -->
     </section>
-
-    <section class="editor hidden">
-
-        <section class="canvas-container">
-            <canvas id="my-canvas" height="500" width="500" onclick="draw(event)">
+    <section class="hidden mygallery">HERE YOULL SEE MY MEMES</section>
+    <section class="meme-editor hidden">
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="450" width="450" onclick="draw(event)">
 </canvas>
-
-            <form id="form-editor" onsubmit="onSubmitForm(event)">
-                <!-- <label for="text"></label> -->
-                <div>
-                    <input class="line-input" type="text" name="txt" placeholder="Enter your text" oninput="onChangeLineTxt(this)">
-                </div>
-                <div style="position:relative; display:inline-block">
-                    <button class="color-btn edit-btn"><i class="fas fa-font material-icons"></i></button>
-                    <input type="color" name="stroke" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
-                </div>
-                <div style="position:relative; display:inline-block">
-                    <button class="color-btn edit-btn"><i class="fas fa-palette material-icons"></i></button>
-                    <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
-                </div>
-                <button class="font edit-btn" onclick="onIncreaseTxt()"><i class="font fas fa-font">+</i></button>
-                <button class="font edit-btn" onclick="onDecreaseTxt()"><i class="font fas fa-font">-</i></button>
-                <button class="edit-btn" onclick="onPositionTxtDown()"><i class="fas fa-arrow-down"></i></button>
-                <button class="edit-btn" onclick="onPositionTxtUp()"><i class="fas fa-arrow-up"></i></button>
-                <button class="change-line-btn edit-btn" onclick="onSwitchBeteenLines()"><i class="change-line-btn fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></button>
-                <button class="change-line-btn edit-btn" onclick="onAddNewLine()"><i class="change-line-btn fas fa-plus"></i></button>
-                <button class="change-line-btn edit-btn" onclick="onDeleteLine()"><i class="change-line-btn fas fa-trash-alt"></i></button>
-                <button class="font edit-btn" onclick="onAlignRight()"><i class="font fas fa-align-left"></i></button>
-                <button class="font edit-btn" onclick="onAlignCenter()"><i class="font fas fa-align-center"></i></button>
-                <button class="font edit-btn" onclick="onAlignLeft()"><i class="font fas fa-align-right"></i></button>
-                <button class="edit-btn" onclick="onSaveMeme()">Save</button>
-                <!-- <button>+</button> -->
-            </form>
+        </div>
+        <section class="control-box">
+            <!-- grid row1/2 -->
+            <input class="line-input" type="text" name="txt" placeholder="Enter your text" oninput="onChangeLineTxt(this)">
+            <!-- grid row2/3 -->
+            <button class="change-line-btn switch edit-btn" title="switch lines" onclick="onSwitchBeteenLines()"><i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></button>
+            <button class="change-line-btn add edit-btn" title="add line" onclick="onAddNewLine()"><i class="fas fa-plus"></i></button>
+            <button class="change-line-btn delete edit-btn" title="delete line" onclick="onDeleteLine()"><i class="fas fa-trash-alt"></i></button>
+            <button class="change-line-btn up edit-btn fas fa-arrow-down" title="lift line up" onclick="onPositionTxtDown()"></button>
+            <button class="change-line-btn down edit-btn fas fa-arrow-up" title="push line down" onclick="onPositionTxtUp()"></button>
+            <!-- grid row3/4 -->
+            <button class="change-txt plus edit-btn font fas fa-font" title="make larger txt" onclick="onIncreaseTxt()">+</button>
+            <button class="change-txt minus edit-btn font fas fa-font" title="make smaller txt" onclick="onDecreaseTxt()">-</button>
+            <button class="change-txt right edit-btn font fas fa-align-left" title="align: right" onclick="onAlignRight()"></button>
+            <button class="change-txt center edit-btn font fas fa-align-center" title="align: center" onclick="onAlignCenter()"></button>
+            <button class="change-txt  left edit-btn font fas fa-align-right" title="align: left" onclick="onAlignLeft()"></button>
+            <!-- grid row4/5 -->
+            <select class="font-style edit-select" title="choose Font" onchange="onChangeFont(value)">
+                <option>Impact</option>
+                <option>Indie</option>
+                <option>Changa</option>
+                <option>Montserrat</option>
+            </select>
+            <div style="position:relative; display:inline-block">
+                <input type="color" name="stroke" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
+                <button title="choose stroke color" class="font-style stroke edit-btn fas fa-font material-icons pointer"></button>
+            </div>
+            <div style="position:relative; display:inline-block">
+                <button title="choose fill color" class="font-style fill edit-btn fas fa-palette material-icons pointer"></button>
+                <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
+            </div>
+            <!-- grid row5/6 -->
+            <div class="stickers" title="choose a sticker"></div>
+            <!-- grid row6/7 -->
+            <button class="snd-meme-btn save" onclick="onSaveMeme()">Save</button>
+            <button class="snd-meme-btn share" onclick="onShareMeme()">Share</button>
+            <button class="snd-meme-btn download" onclick="onDownloadMeme()">Download</button>
         </section>
     </section>
+
     <!-- <section class="about">
         <img src="/img/1.jpg" alt="">
     </section> -->
 
 
-    <script src="js/galleryController.js"></script>
-    <script src="js/memeController.js"></script>
     <script src="js/services/storageService.js"></script>
     <script src="js/services/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
 </body>
 
 </html>

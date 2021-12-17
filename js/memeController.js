@@ -10,9 +10,9 @@ function initCanvas() {
     gLineIdx = getCurrLineIdx();
 }
 
-function onSubmitForm(ev) {
-    ev.preventDefault();
-}
+// function onSubmitForm(ev) {
+//     ev.preventDefault();
+// }
 
 function getCanvasHeight() {
     return gElCanvas.height;
@@ -33,7 +33,7 @@ function renderMeme() {
 function displayCanvas() {
     const meme = getMeme();
     var currImgId = meme.selectedImgId;
-    const elEditor = document.querySelector('.editor');
+    const elEditor = document.querySelector('.meme-editor');
     elEditor.classList.remove('hidden');
     const elGallery = document.querySelector('.gallery');
     elGallery.classList.add('hidden');
@@ -42,7 +42,7 @@ function displayCanvas() {
 }
 
 function hideCanvas() {
-    document.querySelector('.editor').classList.add('hidden');
+    document.querySelector('.meme-editor').classList.add('hidden');
     gElCanvas.classList.add('hidden');
 }
 

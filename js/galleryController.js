@@ -8,7 +8,7 @@ function initGallery() {
 
 function presentGallery() {
     var elGallery = document.querySelector('.gallery');
-    var elEditor = document.querySelector('.editor');
+    var elEditor = document.querySelector('.meme-editor');
     elGallery.classList.remove('hidden');
     elEditor.classList.add('hidden');
     // hideCanvas();
