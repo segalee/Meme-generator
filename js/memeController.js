@@ -2,7 +2,8 @@
 var gElCanvas;
 var gCtx;
 var gLineIdx;
-var gFocusOntxt;
+var gIsFocus = true;
+var gFocusOntxt = true;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
@@ -28,6 +29,8 @@ function renderMeme() {
         var txtVal = selectedLine.txt ? selectedLine.txt : '';
         document.querySelector(`[name=txt]`).value = txtVal;
     });
+    if (gIsFocus) drawRectAroundTxt();
+    else gIsFocus = true;
 }
 
 function displayCanvas() {
@@ -37,6 +40,10 @@ function displayCanvas() {
     elEditor.classList.remove('hidden');
     const elGallery = document.querySelector('.gallery');
     elGallery.classList.add('hidden');
+    const elSearchBar = document.querySelector('.search-area');
+    elSearchBar.classList.add('hidden');
+    const elAboutSection = document.querySelector('.about');
+    elAboutSection.classList.add('hidden');
     const elImg = elGallery.querySelector(`.img-${currImgId}`);
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
 }
@@ -92,6 +99,7 @@ function onPositionTxtDown() {
 
 function onSwitchBeteenLines() {
     console.log('switch');
+    gFocusOntxt = true;
     switchBeteenLines();
     renderMeme();
 }
@@ -100,6 +108,7 @@ function onAddNewLine() {
     // console.log('new line added');
     document.querySelector(`[name=txt]`).value = '';
     setNewLine();
+    gFocusOntxt = true;
     renderMeme();
 }
 
@@ -125,6 +134,8 @@ function onAlignRight() {
 
 function onSaveMeme() {
     console.log('save');
+    gFocusOntxt = false;
+    gIsFocus = false;
     saveMeme();
     const data = gElCanvas.toDataURL();
     saveImg(data);
@@ -136,11 +147,25 @@ function resizeCanvas() {
     var currImgId = meme.selectedImgId;
     const elImg = elGallery.querySelector(`.img-${currImgId}`);
     var ratio = elImg.width / elImg.height;
-    gElCanvas.width = 500;
+    gElCanvas.width = 450;
     gElCanvas.height = gElCanvas.width / ratio;
     changeTxtPos(gElCanvas.width, gElCanvas.height);
 }
 
+// function drawRectAroundTxt() {
+//     const meme = getMeme();
+//     if (gFocusOntxt) {
+//         if (meme.lines.length === 0) return;
+//         const line = meme.lines[meme.selectedLineIdx];
+//         const posX = line.positionX;
+//         const posY = line.positionY;
+//         gCtx.beginPath();
+//         gCtx.rect(posX - 160, posY - 40, 320, 50);
+//         gCtx.setLineDash([4, 4]);
+//         gCtx.strokeStyle = 'black';
+//         gCtx.stroke();
+//     }
+// }
 // BETTER USE OF IMG DRAW TO CANVAS
 // function renderMeme(num) {
 //     var img = new Image();

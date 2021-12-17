@@ -41,6 +41,8 @@
 body {
     margin: 0;
     font-family: Montserrat;
+    height: 100vh;
+    min-height: 100vh;
     /* max-width: 600px */
 }
 
@@ -182,12 +184,18 @@ body.rtl {
     background-color: #e3e3e3;
 }
 
+.mygallery h2 {
+    font-family: Montserrat;
+    font-size: 3rem;
+    color: #ff7f00;
+    grid-column: 1/-1;
+}
+
 .mygallery {
+    min-height: 50vh;
     display: grid;
     grid-gap: 15px 15px;
     grid-template-columns: repeat(auto-fill, 300px);
-    padding: 20px;
-    padding-block: 50px;
     justify-content: center;
 }
 
@@ -212,6 +220,7 @@ body.rtl {
     max-width: 95vw;
     background-color: #e3e3e3;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .canvas-container {
@@ -327,10 +336,12 @@ body.rtl {
 }
 
 .font-style.stroke {
+    cursor: auto;
     grid-column: 4/5;
 }
 
 .font-style.fill {
+    cursor: auto;
     grid-column: 5/6;
 }
 
@@ -410,6 +421,10 @@ body.rtl {
     color: #c57526;
 }
 
+.about .fa-linkedin {
+    color: #6d6b69a6;
+}
+
 
 /* HELPERS */
 
@@ -429,15 +444,15 @@ body.rtl {
 }
 
 footer {
-    width: 600px;
+    /* position: fixed; */
     height: 200px;
-    margin: 83.5px 0 0;
     color: #fff;
     padding-block: 80px;
     text-align: center;
     margin: auto;
     background-color: #ff7f00;
     width: 100%;
+    margin-block-start: 125px;
 }
 
 footer p {

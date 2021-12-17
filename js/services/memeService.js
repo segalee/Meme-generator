@@ -192,3 +192,8 @@ function saveImg(data) {
     gSavedImgs.unshift(data);
     saveToStorage(IMGS_DB_KEY, gSavedImgs);
 }
+
+function getMyImgs() {
+    var imgs = loadFromStorage(IMGS_DB_KEY);
+    return imgs;
+}

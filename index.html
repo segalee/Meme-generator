@@ -23,9 +23,9 @@
         <ul class="flex">
             <li class="clean-list"><a onclick="presentGallery()" href="#">gallery</a></li>
             <span>|</span>
-            <li class="clean-list"><a href="#">my gallery</a></li>
+            <li class="clean-list"><a onclick="presentMyGallery()" href="#">my gallery</a></li>
             <span>|</span>
-            <li class="clean-list"><a href="#">about</a></li>
+            <li class="clean-list link-to-about pointer"><a onclick="scrollToAbout()">about</a></li>
         </ul>
     </nav>
     <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
@@ -49,7 +49,12 @@
         <div class="gallery"></div>
         <!-- <img class="img img-2" src="img/2.jpg" alt="" style="display: none" /> -->
     </section>
-    <section class="hidden mygallery">HERE YOULL SEE MY MEMES</section>
+    <section class="mygallery-section hidden">
+        <div class="mygallery">
+            <h2>No saved memes yet...</h2>
+        </div>
+
+    </section>
     <section class="meme-editor hidden">
         <div class="canvas-container">
             <canvas id="my-canvas" height="450" width="450" onclick="draw(event)">
@@ -79,10 +84,10 @@
             </select>
             <div style="position:relative; display:inline-block">
                 <input type="color" name="stroke" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
-                <button title="choose stroke color" class="font-style stroke edit-btn fas fa-font material-icons pointer"></button>
+                <button title="choose stroke color" class="color font-style stroke edit-btn fas fa-font material-icons"></button>
             </div>
             <div style="position:relative; display:inline-block">
-                <button title="choose fill color" class="font-style fill edit-btn fas fa-palette material-icons pointer"></button>
+                <button title="choose fill color" class="color font-style fill edit-btn fas fa-palette material-icons"></button>
                 <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
             </div>
             <!-- grid row5/6 -->
@@ -96,14 +101,13 @@
 
     <section class="about flex">
         <div class="about-img"> <img src="/img/me.jpg" alt=""></div>
-
         <div class="about-info">
             <h2>Lee Segal</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, reprehenderit!</p>
             <div class="links">
-                <a href="#" class="link fab fa-github-square"></a>
-                <a href="" class="link  fab fa-facebook-square"></a>
-                <a href="" class="link  fab fa-linkedin"></a>
+                <a href="https://github.com/segalee" class="link fab fa-github-square"></a>
+                <a href="https://www.facebook.com/segalee" class="link  fab fa-facebook-square"></a>
+                <a href="#" class="link  fab fa-linkedin"></a>
             </div>
         </div>
 
