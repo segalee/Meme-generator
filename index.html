@@ -72,11 +72,11 @@
             <!-- grid row3/4 -->
             <button class="change-txt plus edit-btn font fas fa-font" title="make larger txt" onclick="onIncreaseTxt()">+</button>
             <button class="change-txt minus edit-btn font fas fa-font" title="make smaller txt" onclick="onDecreaseTxt()">-</button>
-            <button class="change-txt right edit-btn font fas fa-align-left" title="align: right" onclick="onAlignRight()"></button>
+            <button class="change-txt right edit-btn font fas fa-align-left" title="align: left" onclick="onAlignRight()"></button>
             <button class="change-txt center edit-btn font fas fa-align-center" title="align: center" onclick="onAlignCenter()"></button>
-            <button class="change-txt  left edit-btn font fas fa-align-right" title="align: left" onclick="onAlignLeft()"></button>
+            <button class="change-txt  left edit-btn font fas fa-align-right" title="align: right" onclick="onAlignLeft()"></button>
             <!-- grid row4/5 -->
-            <select class="font-style edit-select" title="choose Font" onchange="onChangeFont(value)">
+            <select class="font-style edit-select" name="fontFamily" title="choose Font" onchange="onChangeFont(this)">
                 <option>Impact</option>
                 <option>Indie</option>
                 <option>Changa</option>

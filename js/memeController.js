@@ -132,6 +132,11 @@ function onAlignRight() {
     renderMeme();
 }
 
+function onChangeFont(font) {
+    changeFont(font);
+    renderMeme();
+}
+
 function onSaveMeme() {
     console.log('save');
     gFocusOntxt = false;

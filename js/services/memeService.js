@@ -171,6 +171,13 @@ function alignRight() {
     currLine.align = 'right';
 }
 
+function changeFont(input) {
+    const newFont = input.value;
+    const fontFamily = input.name;
+    const currLine = gMeme.lines[gMeme.selectedLineIdx];
+    currLine[fontFamily] = newFont;
+}
+
 function getCurrLineIdx() {
     gCurrLine = gMeme.selectedLineIdx;
     return gCurrLine;
