@@ -119,6 +119,7 @@ body.rtl {
     color: #909090;
     margin-inline-start: 2rem;
     font-family: Montserrat;
+    margin-bottom: 10px;
 }
 
 .search-icon {

@@ -30,8 +30,7 @@ function renderMeme() {
         document.querySelector(`[name=txt]`).value = txtVal;
     });
     if (gIsFocusOnTxt) drawRectAroundTxt();
-    else gIsFocusOnTxt = false;
-    // else gIsFocusOnTxt = false;
+    gIsFocusOnTxt = false;
 }
 
 function displayCanvas() {
@@ -162,6 +161,7 @@ function onDownloadMeme(elLink) {
 }
 
 function drawRectAroundTxt() {
+    if (!gIsFocusOnTxt) return;
     if (gIsFocusOnTxt) {
         const meme = getMeme();
         if (meme.lines.length === 0) return;
