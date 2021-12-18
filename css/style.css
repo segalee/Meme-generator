@@ -109,6 +109,7 @@ body.rtl {
 
 .key-words-container {
     display: inline-block;
+    cursor: not-allowed;
 }
 
 .search-area input {

@@ -3,12 +3,12 @@ var gElCanvas;
 var gCtx;
 var gLineIdx;
 var gIsFocusOnTxt = false;
-var gHideFocus = true;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
     gLineIdx = getCurrLineIdx();
+    // resizeCanvas();
 }
 
 function getCanvasHeight() {
@@ -31,6 +31,7 @@ function renderMeme() {
     });
     if (gIsFocusOnTxt) drawRectAroundTxt();
     else gIsFocusOnTxt = false;
+    // else gIsFocusOnTxt = false;
 }
 
 function displayCanvas() {
@@ -159,27 +160,13 @@ function onShareMeme() {
 }
 
 function onDownloadMeme(elLink) {
+    gHideFocus = true;
     downloadMeme(elLink);
 }
 
-function onUploadMeme() {
-    console.log('upload');
-    // loadImageFromInput(ev, renderMeme);
-}
-
-function resizeCanvas() {
-    const meme = getMeme();
-    var currImgId = meme.selectedImgId;
-    const elImg = elGallery.querySelector(`.img-${currImgId}`);
-    var ratio = elImg.width / elImg.height;
-    gElCanvas.width = 450;
-    gElCanvas.height = gElCanvas.width / ratio;
-    changeTxtPos(gElCanvas.width, gElCanvas.height);
-}
-
 function drawRectAroundTxt() {
-    const meme = getMeme();
     if (gIsFocusOnTxt) {
+        const meme = getMeme();
         if (meme.lines.length === 0) return;
         const line = meme.lines[meme.selectedLineIdx];
         const x = line.xAxis;
@@ -191,3 +178,20 @@ function drawRectAroundTxt() {
         gCtx.closePath();
     }
 }
+
+// function onUploadMeme() {
+
+//     // console.log('upload');
+//     // loadImageFromInput(ev, renderMeme);
+// }
+
+// function resizeCanvas() {
+//     const meme = getMeme();
+//     var currImgId = meme.selectedImgId;
+//     const elGallery = document.querySelector('.gallery');
+//     const elImg = elGallery.querySelector(`.img-${currImgId}`);
+//     var ratio = elImg.width / elImg.height;
+//     gElCanvas.width = 450;
+//     gElCanvas.height = gElCanvas.width / ratio;
+//     changeTxtPos(gElCanvas.width, gElCanvas.height);
+// }
