@@ -211,21 +211,6 @@ function downloadMeme(elLink) {
     elLink.href = imgContent;
 }
 
-// function loadImageFromInput(ev, onImageReady) {
-//     console.log('uploading');
-//     // document.querySelector('.share-container').innerHTML = '';
-//     var reader = new FileReader();
-//     reader.onload = (event) => {
-//         console.log('onload');
-//         var img = new Image();
-//         // Render on canvas
-//         img.onload = onImageReady.bind(null, img);
-//         img.src = event.target.result;
-//     };
-//     console.log('after');
-//     reader.readAsDataURL(ev.target.files[0]);
-// }
-
 function saveImg(data) {
     gSavedImgs.unshift(data);
     saveToStorage(IMGS_DB_KEY, gSavedImgs);
@@ -240,3 +225,42 @@ function getMyImgs() {
     var imgs = loadFromStorage(IMGS_DB_KEY);
     return imgs;
 }
+
+// function getKeyWords() {
+//     const keywords = new Set();
+//     gImgs.map((img) => {
+//         img.keywords.map((keyword) => {
+//             keywords.add(keyword);
+//         });
+//     });
+//     console.log('keywords', keywords.entries);
+// }
+
+function filterByKeyWord(elVal) {
+    const filteredImgs = gImgs.filter((img) => {
+        const keywords = img.keywords;
+        return keywords.includes(elVal);
+        // keyWords.map((keyword) => {
+        //     if (keyword === `${elVal}`) {
+        //         filteredImgs.push(img);
+        //     }
+        // });
+    });
+    console.log('filteredImgs', filteredImgs);
+    return filteredImgs;
+}
+
+// function loadImageFromInput(ev, onImageReady) {
+//     console.log('uploading');
+//     // document.querySelector('.share-container').innerHTML = '';
+//     var reader = new FileReader();
+//     reader.onload = (event) => {
+//         console.log('onload');
+//         var img = new Image();
+//         // Render on canvas
+//         img.onload = onImageReady.bind(null, img);
+//         img.src = event.target.result;
+//     };
+//     console.log('after');
+//     reader.readAsDataURL(ev.target.files[0]);
+// }

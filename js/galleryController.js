@@ -71,3 +71,22 @@ function renderMyGallery() {
     });
     elMyGallery.innerHTML = strHTML;
 }
+
+function onFilterByKeyWord(elVal) {
+    if (!elVal || elVal === '') {
+        renderGallery();
+    } else {
+        renderFilteredGallery(elVal);
+    }
+}
+
+function renderFilteredGallery(elVal) {
+    const filteredImgs = filterByKeyWord(elVal);
+    console.log('filteredImgs:', filteredImgs);
+    var elGallery = document.querySelector('.gallery');
+    var strHTML = '';
+    filteredImgs.forEach((img) => {
+        strHTML += ` <img class="pointer img img-${img.id}" src="img/${img.id}.jpg" alt="" onclick="onImgSelect(${img.id})" />`;
+    });
+    elGallery.innerHTML = strHTML;
+}

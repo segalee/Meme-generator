@@ -3,6 +3,7 @@ var gElCanvas;
 var gCtx;
 var gLineIdx;
 var gIsFocusOnTxt = false;
+var gHideFocus = true;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');

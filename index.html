@@ -17,26 +17,23 @@
 </head>
 
 <body onload="initGallery()">
-    <!-- <header class="main-header main-layout"> -->
-    <nav class="main-nav flex align-center space-between">
-        <div class="logo">memegen</div>
-        <ul class="flex">
-            <li class="clean-list"><a onclick="presentGallery()" href="#">gallery</a></li>
-            <span>|</span>
-            <li class="clean-list"><a onclick="presentMyGallery()" href="#">my gallery</a></li>
-            <span>|</span>
-            <li class="clean-list link-to-about pointer"><a onclick="scrollToAbout()">about</a></li>
-        </ul>
-        <button class="btn-menu fas fa-bars pointer hidden" onclick="toggleMenu()"></button>
-    </nav>
-    <!-- </header> -->
+    <header>
+        <nav class="main-nav flex align-center space-between">
+            <div class="logo">memegen</div>
+            <ul class="flex">
+                <li class="clean-list"><a onclick="presentGallery()" href="#">gallery</a></li>
+                <span>|</span>
+                <li class="clean-list"><a onclick="presentMyGallery()" href="#">my gallery</a></li>
+                <span>|</span>
+                <li class="clean-list link-to-about pointer"><a onclick="scrollToAbout()">about</a></li>
+            </ul>
+            <button class="btn-menu fas fa-bars pointer hidden" onclick="toggleMenu()"></button>
+        </nav>
+    </header>
 
     <section class="search-area">
-
-        <input list="key-words-search" name="key-word-search" id="key-word-search" placeholder="Enter search keyword"><img class="search-icon" src="icons/search-icon.png" alt="">
-        <div class="key-words-container">
-            <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a class="medium" href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#" class="large">funny</a> <a href="#" class="medium">politics</a> </p><a class="search-more" href="#">more...</a>
-        </div>
+        <label for="key-word-search" class="hidden"></label>
+        <input oninput="onFilterByKeyWord(this.value)" list="key-words-search" name="key-word-search" id="key-word-search" placeholder="Enter search keyword"><img class="search-icon" src="icons/search-icon.png" alt="">
         <datalist id="key-words-search">
             <option value="dog">
             <option value="cat">
@@ -44,7 +41,11 @@
             <option value="baby">
             <option value="success">
             <option value="funny">
+            <option value="politics">
         </datalist>
+        <div class="key-words-container">
+            <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a class="medium" href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#" class="large">funny</a> <a href="#" class="medium">politics</a> </p><a class="search-more" href="#">more...</a>
+        </div>
     </section>
 
     <section class="gallery-section">
