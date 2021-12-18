@@ -37,6 +37,7 @@ function onImgSelect(imgId) {
 }
 
 function scrollToAbout() {
+    presentGallery();
     document.querySelector('.about').scrollIntoView({ behavior: 'smooth' });
     document.querySelector('.link-to-about').getElementsByClassName.cursor =
         'pointer';

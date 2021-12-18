@@ -333,6 +333,23 @@ body.rtl {
     border: none;
     border-radius: 10px;
     height: 3.5rem;
+    font-size: 1.2rem;
+}
+
+.font-style.edit-select .impact {
+    font-family: Impact;
+}
+
+.font-style.edit-select .indie {
+    font-family: Indie;
+}
+
+.font-style.edit-select .changa {
+    font-family: Changa;
+}
+
+.font-style.edit-select .montserrat {
+    font-family: Montserrat;
 }
 
 .font-style.stroke {
@@ -422,6 +439,11 @@ body.rtl {
 }
 
 .about .fa-linkedin {
+    /* color: #6d6b69a6; */
+    cursor: not-allowed;
+}
+
+.about .fa-linkedin:hover {
     color: #6d6b69a6;
 }
 
