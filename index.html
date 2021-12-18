@@ -27,14 +27,16 @@
             <span>|</span>
             <li class="clean-list link-to-about pointer"><a onclick="scrollToAbout()">about</a></li>
         </ul>
+        <button class="btn-menu fas fa-bars pointer hidden" onclick="toggleMenu()"></button>
     </nav>
-    <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
     <!-- </header> -->
 
     <section class="search-area">
 
         <input list="key-words-search" name="key-word-search" id="key-word-search" placeholder="Enter search keyword"><img class="search-icon" src="icons/search-icon.png" alt="">
-        <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a class="medium" href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#" class="large">funny</a> <a href="#" class="medium">politics</a> </p><a class="search-more" href="#">more...</a>
+        <div class="key-words-container">
+            <p class="key-words inline-block"> <a href="#">dog</a> <a href="#">cat</a> <a class="medium" href="#">cute</a> <a href="#">baby</a> <a href="#">success</a> <a href="#" class="large">funny</a> <a href="#" class="medium">politics</a> </p><a class="search-more" href="#">more...</a>
+        </div>
         <datalist id="key-words-search">
             <option value="dog">
             <option value="cat">
@@ -122,7 +124,12 @@
         <p class="footer-logo">memegen</p>
         <p>all rights reserved 2021</p>
     </footer>
-
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+            // document.querySelector('ul').classList.toggle('hidden');
+        }
+    </script>
     <script src="js/services/storageService.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/galleryController.js"></script>
