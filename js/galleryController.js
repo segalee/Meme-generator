@@ -82,7 +82,6 @@ function onFilterByKeyWord(elVal) {
 
 function renderFilteredGallery(elVal) {
     const filteredImgs = filterByKeyWord(elVal);
-    console.log('filteredImgs:', filteredImgs);
     var elGallery = document.querySelector('.gallery');
     var strHTML = '';
     filteredImgs.forEach((img) => {

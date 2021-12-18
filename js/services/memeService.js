@@ -226,16 +226,6 @@ function getMyImgs() {
     return imgs;
 }
 
-// function getKeyWords() {
-//     const keywords = new Set();
-//     gImgs.map((img) => {
-//         img.keywords.map((keyword) => {
-//             keywords.add(keyword);
-//         });
-//     });
-//     console.log('keywords', keywords.entries);
-// }
-
 function filterByKeyWord(elVal) {
     const filteredImgs = gImgs.filter((img) => {
         const keywords = img.keywords;

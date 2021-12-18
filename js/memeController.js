@@ -55,7 +55,6 @@ function hideCanvas() {
 }
 
 function onChangeLineTxt(elInput) {
-    // checkIsFocus();
     gIsFocusOnTxt = true;
     var txt = elInput.value;
     setLineTxt(txt);
@@ -75,7 +74,6 @@ function drawTxt(line) {
 }
 
 function onColorChange(elInput) {
-    // console.log('elInput.name:', elInput.name);
     setColor(elInput);
     renderMeme();
 }
@@ -101,7 +99,6 @@ function onPositionTxtDown() {
 }
 
 function onSwitchBeteenLines() {
-    console.log('switch');
     gIsFocusOnTxt = true;
     switchBeteenLines();
     renderMeme();
