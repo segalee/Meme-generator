@@ -16,7 +16,6 @@ function presentGallery() {
     const elAboutSection = document.querySelector('.about');
     elAboutSection.classList.remove('hidden');
     hideMyGallery();
-    // hideCanvas();
 }
 
 function renderGallery() {
@@ -65,8 +64,6 @@ function hideMyGallery() {
 
 function renderMyGallery() {
     var imgs = getMyImgs();
-    console.log('imgs:', imgs);
-
     var elMyGallery = document.querySelector('.mygallery');
     var strHTML = '';
     imgs.forEach((img) => {

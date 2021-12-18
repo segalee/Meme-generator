@@ -55,6 +55,8 @@
         </div>
 
     </section>
+    <div class="share-container"></div>
+    </div>
     <section class="meme-editor hidden">
         <div class="canvas-container">
             <canvas id="my-canvas" height="450" width="450" onclick="draw(event)">
@@ -67,8 +69,8 @@
             <button class="change-line-btn switch edit-btn" title="switch lines" onclick="onSwitchBeteenLines()"><i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></button>
             <button class="change-line-btn add edit-btn" title="add line" onclick="onAddNewLine()"><i class="fas fa-plus"></i></button>
             <button class="change-line-btn delete edit-btn" title="delete line" onclick="onDeleteLine()"><i class="fas fa-trash-alt"></i></button>
-            <button class="change-line-btn up edit-btn fas fa-arrow-down" title="lift line up" onclick="onPositionTxtDown()"></button>
-            <button class="change-line-btn down edit-btn fas fa-arrow-up" title="push line down" onclick="onPositionTxtUp()"></button>
+            <button class="change-line-btn up edit-btn fas fa-arrow-down" title="push line down" onclick="onPositionTxtDown()"></button>
+            <button class="change-line-btn down edit-btn fas fa-arrow-up" title="lift line up" onclick="onPositionTxtUp()"></button>
             <!-- grid row3/4 -->
             <button class="change-txt plus edit-btn font fas fa-font" title="make larger txt" onclick="onIncreaseTxt()">+</button>
             <button class="change-txt minus edit-btn font fas fa-font" title="make smaller txt" onclick="onDecreaseTxt()">-</button>
@@ -76,7 +78,7 @@
             <button class="change-txt center edit-btn font fas fa-align-center" title="align: center" onclick="onAlignCenter()"></button>
             <button class="change-txt  left edit-btn font fas fa-align-right" title="align: right" onclick="onAlignLeft()"></button>
             <!-- grid row4/5 -->
-            <select class="font-style edit-select" name="fontFamily" title="choose Font" onchange="onChangeFont(this)">
+            <select class="font-style edit-select pointer" name="fontFamily" title="choose Font" onchange="onChangeFont(this)">
                 <option class="impact">Impact</option>
                 <option class="indie">Indie</option>
                 <option class="changa">Changa</option>
@@ -93,10 +95,13 @@
             <!-- grid row5/6 -->
             <div class="stickers" title="choose a sticker"></div>
             <!-- grid row6/7 -->
-            <button class="snd-meme-btn save" onclick="onSaveMeme()">Save</button>
-            <button class="snd-meme-btn share" onclick="onShareMeme()">Share</button>
-            <button class="snd-meme-btn download" onclick="onDownloadMeme()">Download</button>
+            <a class="snd-meme-btn save clean-link" href="#" onclick="onSaveMeme()">Save</a>
+            <a class="snd-meme-btn share clean-link" href="#" onclick="onShareMeme()">Share</a>
+            <!-- <a class="snd-meme-btn upload clean-link" href="#" onclick="onUploadMeme()">Upload</a> -->
+            <!-- <input class="snd-meme-btn upload clean-link file-input" type="file" class="file-input" name="image" onchange="onImgInput(event)" /> -->
+            <a class="snd-meme-btn download clean-link" href="#" onclick="onDownloadMeme(this)" download="my-img.jpg">Download</a>
         </section>
+
     </section>
 
     <section class="about flex">

@@ -19,6 +19,10 @@ function getCanvasHeight() {
     return gElCanvas.height;
 }
 
+function getCanvas() {
+    return gElCanvas;
+}
+
 function renderMeme() {
     displayCanvas();
     const meme = getMeme();
@@ -145,6 +149,27 @@ function onSaveMeme() {
     const data = gElCanvas.toDataURL();
     saveImg(data);
     //TODO -- ADD REDIRECT TO SAVED MEMES
+}
+
+function onShareMeme() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg');
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl);
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`
+        );
+    }
+    doShareMeme(imgDataUrl, onSuccess);
+}
+
+function onDownloadMeme(elLink) {
+    downloadMeme(elLink);
+}
+
+function onUploadMeme() {
+    console.log('upload');
+    // loadImageFromInput(ev, renderMeme);
 }
 
 function resizeCanvas() {

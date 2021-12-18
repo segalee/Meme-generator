@@ -139,7 +139,6 @@ function switchBeteenLines() {
     const length = gMeme.lines.length;
     var currIdx = gMeme.selectedLineIdx;
     if (length === 0) {
-        console.log('1');
         return;
     }
     if (currIdx === length - 1) {
@@ -153,7 +152,6 @@ function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     if (gMeme.lines.length === 0 || gMeme.selectedLineIdx === 0) return;
     gMeme.selectedLineIdx--;
-    // console.log('gMeme:', gMeme);
 }
 
 function alignLeft() {
@@ -183,11 +181,6 @@ function getCurrLineIdx() {
     return gCurrLine;
 }
 
-function saveMeme() {
-    gMemes.push(gMeme);
-    saveToStorage(MEMES_DB_KEY, gMemes);
-}
-
 function changeTxtPos(width, height) {
     gMeme.lines.forEach((line) => {
         line.xAxis = width / 2;
@@ -195,9 +188,52 @@ function changeTxtPos(width, height) {
     });
 }
 
+function doShareMeme(imgDataUrl, onSuccess) {
+    const formData = new FormData();
+    formData.append('img', imgDataUrl);
+    fetch('//ca-upload.com/here/upload.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((res) => res.text())
+        .then((url) => {
+            console.log('Got back live url:', url);
+            onSuccess(url);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
+
+function downloadMeme(elLink) {
+    const elCanvas = getCanvas();
+    var imgContent = elCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
+}
+
+// function loadImageFromInput(ev, onImageReady) {
+//     console.log('uploading');
+//     // document.querySelector('.share-container').innerHTML = '';
+//     var reader = new FileReader();
+//     reader.onload = (event) => {
+//         console.log('onload');
+//         var img = new Image();
+//         // Render on canvas
+//         img.onload = onImageReady.bind(null, img);
+//         img.src = event.target.result;
+//     };
+//     console.log('after');
+//     reader.readAsDataURL(ev.target.files[0]);
+// }
+
 function saveImg(data) {
     gSavedImgs.unshift(data);
     saveToStorage(IMGS_DB_KEY, gSavedImgs);
+}
+
+function saveMeme() {
+    gMemes.push(gMeme);
+    saveToStorage(MEMES_DB_KEY, gMemes);
 }
 
 function getMyImgs() {
