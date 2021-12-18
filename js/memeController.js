@@ -182,20 +182,20 @@ function resizeCanvas() {
     changeTxtPos(gElCanvas.width, gElCanvas.height);
 }
 
-// function drawRectAroundTxt() {
-//     const meme = getMeme();
-//     if (gFocusOntxt) {
-//         if (meme.lines.length === 0) return;
-//         const line = meme.lines[meme.selectedLineIdx];
-//         const posX = line.positionX;
-//         const posY = line.positionY;
-//         gCtx.beginPath();
-//         gCtx.rect(posX - 160, posY - 40, 320, 50);
-//         gCtx.setLineDash([4, 4]);
-//         gCtx.strokeStyle = 'black';
-//         gCtx.stroke();
-//     }
-// }
+function drawRectAroundTxt() {
+    const meme = getMeme();
+    if (gFocusOntxt) {
+        if (meme.lines.length === 0) return;
+        const line = meme.lines[meme.selectedLineIdx];
+        const x = line.xAxis;
+        const y = line.yAxis;
+        gCtx.beginPath();
+        gCtx.rect(x - 225, y - 43, 400, 49);
+        gCtx.strokeStyle = 'orange';
+        gCtx.stroke();
+        gCtx.closePath();
+    }
+}
 // BETTER USE OF IMG DRAW TO CANVAS
 // function renderMeme(num) {
 //     var img = new Image();
