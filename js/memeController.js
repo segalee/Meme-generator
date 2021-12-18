@@ -2,18 +2,13 @@
 var gElCanvas;
 var gCtx;
 var gLineIdx;
-var gIsFocus = true;
-var gFocusOntxt = true;
+var gIsFocusOnTxt = false;
 
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
     gLineIdx = getCurrLineIdx();
 }
-
-// function onSubmitForm(ev) {
-//     ev.preventDefault();
-// }
 
 function getCanvasHeight() {
     return gElCanvas.height;
@@ -33,8 +28,8 @@ function renderMeme() {
         var txtVal = selectedLine.txt ? selectedLine.txt : '';
         document.querySelector(`[name=txt]`).value = txtVal;
     });
-    if (gIsFocus) drawRectAroundTxt();
-    else gIsFocus = true;
+    if (gIsFocusOnTxt) drawRectAroundTxt();
+    else gIsFocusOnTxt = false;
 }
 
 function displayCanvas() {
@@ -58,6 +53,8 @@ function hideCanvas() {
 }
 
 function onChangeLineTxt(elInput) {
+    // checkIsFocus();
+    gIsFocusOnTxt = true;
     var txt = elInput.value;
     setLineTxt(txt);
     renderMeme();
@@ -103,16 +100,15 @@ function onPositionTxtDown() {
 
 function onSwitchBeteenLines() {
     console.log('switch');
-    gFocusOntxt = true;
+    gIsFocusOnTxt = true;
     switchBeteenLines();
     renderMeme();
 }
 
 function onAddNewLine() {
-    // console.log('new line added');
+    gIsFocusOnTxt = true;
     document.querySelector(`[name=txt]`).value = '';
     setNewLine();
-    gFocusOntxt = true;
     renderMeme();
 }
 
@@ -142,16 +138,14 @@ function onChangeFont(font) {
 }
 
 function onSaveMeme() {
-    console.log('save');
-    gFocusOntxt = false;
-    gIsFocus = false;
+    gIsFocusOnTxt = false;
     saveMeme();
     const data = gElCanvas.toDataURL();
     saveImg(data);
-    //TODO -- ADD REDIRECT TO SAVED MEMES
 }
 
 function onShareMeme() {
+    gIsFocusOnTxt = false;
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg');
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
@@ -184,7 +178,7 @@ function resizeCanvas() {
 
 function drawRectAroundTxt() {
     const meme = getMeme();
-    if (gFocusOntxt) {
+    if (gIsFocusOnTxt) {
         if (meme.lines.length === 0) return;
         const line = meme.lines[meme.selectedLineIdx];
         const x = line.xAxis;
@@ -196,12 +190,3 @@ function drawRectAroundTxt() {
         gCtx.closePath();
     }
 }
-// BETTER USE OF IMG DRAW TO CANVAS
-// function renderMeme(num) {
-//     var img = new Image();
-//     img.src = `/meme-imgs (square)/${num}.jpg`;
-//     img.onload = () => {
-//         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height); //img,x,y,xend,yend
-//     };
-//     drawTxt('HELLO WORD !', gElCanvas.width / 2, gElCanvas.height / 2);
-// }
