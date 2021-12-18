@@ -73,7 +73,7 @@ function renderMyGallery() {
 }
 
 function onFilterByKeyWord(elVal) {
-    if (!elVal || elVal === '') {
+    if (!elVal) {
         renderGallery();
     } else {
         renderFilteredGallery(elVal);
