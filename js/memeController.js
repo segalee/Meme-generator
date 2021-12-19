@@ -137,6 +137,8 @@ function onChangeFont(font) {
 
 function onSaveMeme() {
     gIsFocusOnTxt = false;
+    onAddNewLine();
+    onDeleteLine();
     saveMeme();
     const data = gElCanvas.toDataURL();
     saveImg(data);
