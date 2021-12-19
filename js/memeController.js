@@ -146,6 +146,8 @@ function onSaveMeme() {
 
 function onShareMeme() {
     gIsFocusOnTxt = false;
+    onAddNewLine();
+    onDeleteLine();
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg');
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
@@ -159,6 +161,8 @@ function onShareMeme() {
 
 function onDownloadMeme(elLink) {
     gHideFocus = true;
+    onAddNewLine();
+    onDeleteLine();
     downloadMeme(elLink);
 }
 
