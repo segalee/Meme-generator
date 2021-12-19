@@ -530,8 +530,31 @@ footer p.footer-logo {
 }
 
 @media (max-width: 910px) {
+    .meme-editor {
+        flex-direction: column;
+    }
+    .control-box {
+        margin-left: 150px;
+        margin-right: 50px;
+        grid-gap: 3px;
+        width: 50%;
+        align-self: center;
+        margin-inline-start: 20vw;
+    }
+    #my-canvas {
+        width: 450px;
+        height: 450px;
+        margin-inline: 50%;
+        margin-block: 50px;
+        margin-bottom: 0px;
+    }
+    .line-input {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 640px) {
     .main-nav {
-        /* position: fixed; */
         z-index: 4;
     }
     .main-nav ul {
@@ -573,12 +596,7 @@ footer p.footer-logo {
     body.menu-open .main-nav ul {
         transform: translateX(0);
     }
-    .meme-editor {
-        flex-direction: column;
-    }
     .control-box {
-        margin-left: 50px;
-        margin-right: 50px;
         grid-gap: 3px;
         width: 50%;
         align-self: center;
@@ -586,8 +604,8 @@ footer p.footer-logo {
         margin-inline-start: -28vw;
     }
     #my-canvas {
-        width: 100%;
-        margin-inline: 20%;
-        margin-block: 50px;
+        width: 277px;
+        height: 277px;
+        margin-inline: 25%;
     }
 }
