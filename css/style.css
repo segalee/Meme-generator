@@ -260,7 +260,7 @@ body.rtl {
     border: none;
     border-radius: 10px;
     text-align: center;
-    height: 3.5rem;
+    height: 3rem;
     font-size: 1.5rem;
 }
 
@@ -268,7 +268,7 @@ body.rtl {
     font-size: 25px;
     cursor: pointer;
     width: 3.5rem;
-    height: 3.5rem;
+    height: 3rem;
     border: none;
     border-radius: 10px;
     background-color: white;
@@ -342,7 +342,7 @@ body.rtl {
     height: fit-content;
     border: none;
     border-radius: 10px;
-    height: 3.5rem;
+    height: 3rem;
     font-size: 1.2rem;
 }
 
@@ -380,6 +380,16 @@ body.rtl {
     border: none;
 }
 
+.stickers .sticker {
+    width: 50px;
+}
+
+.stickers button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0px
+}
+
 .snd-meme-btn {
     font-family: Montserrat;
     border: none;
@@ -389,7 +399,8 @@ body.rtl {
     text-align: center;
     font-size: 1.2rem;
     cursor: pointer;
-    padding-top: 0.5rem;
+    padding-top: 1.33rem;
+    ;
 }
 
 .snd-meme-btn:hover {
@@ -449,6 +460,7 @@ body.rtl {
 .about .link {
     color: #ff7f00;
     font-size: 3rem;
+    text-decoration: none;
 }
 
 .about .link:hover {
@@ -541,10 +553,6 @@ footer p.footer-logo {
         padding-inline-start: 0vw;
     }
     .control-box {
-        /* margin-left: 130px; */
-        /* margin-right: 50px; */
-        /* grid-gap: 3px; */
-        /* width: 40%; */
         align-self: center;
         margin-inline-start: 15vw;
     }
@@ -563,19 +571,20 @@ footer p.footer-logo {
 @media (max-width: 640px) {
     .main-nav {
         z-index: 4;
+        position: fixed;
     }
     .main-nav ul {
         background-color: #ff8000c9;
-        height: 100vh;
+        height: 112vh;
         z-index: 3;
         flex-direction: column;
         position: fixed;
         margin-block-start: 100vh;
-        margin-inline-end: -40px;
-        padding-top: 50px;
+        padding-top: 93px;
         width: 200px;
         transform: translateX(-100%);
-        transition: 1s
+        transition: 1s;
+        left: -10vw;
     }
     .main-nav a {
         border-bottom: 1px solid #000;
@@ -621,10 +630,26 @@ footer p.footer-logo {
 }
 
 @media (max-width: 560px) {
+    .meme-editor {
+        padding-inline-start: 30vw;
+    }
     #my-canvas {
-        margin-inline: 15%;
+        margin-inline: -15vw;
     }
     .control-box {
         margin-inline-start: -50vw;
+    }
+}
+
+@media (max-width: 460px) {
+    .meme-editor {
+        padding-inline-start: 30vw;
+    }
+    #my-canvas {
+        margin-inline: -15vw;
+    }
+    .control-box {
+        width: 77%;
+        grid-gap: 3px;
     }
 }

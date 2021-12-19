@@ -5,12 +5,13 @@ const IMGS_DB_KEY = 'IMGS';
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 var gImgLng = 18;
 var gCurrLine;
-var gCurrLineId = 0;
+// var gCurrLineId = 0;
 var gYAxis = 50;
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] }];
 var gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
+    data: null,
     lines: [{
         txt: '',
         size: 50,
@@ -20,8 +21,36 @@ var gMeme = {
         yAxis: gYAxis,
         xAxis: 250,
         fontFamily: 'impact',
+        isSticker: false,
     }, ],
 };
+
+// var gStickers = [{
+//         id: 1,
+//         url: 'stickers/1.png',
+//         positionX: 225,
+//         positionY: 225,
+//         height: 32,
+//         width: 85,
+//     },
+//     {
+//         id: 2,
+//         url: 'stickers/2.png',
+//         positionX: 225,
+//         positionY: 225,
+//         height: 42,
+//         width: 103,
+//     },
+//     {
+//         id: 3,
+//         url: 'stickers/3.png',
+//         positionX: 225,
+//         positionY: 225,
+//         height: 71,
+//         width: 74,
+//     },
+// ];
+
 var gMemes = loadFromStorage(MEMES_DB_KEY) ? loadFromStorage(MEMES_DB_KEY) : [];
 var gSavedImgs = loadFromStorage(IMGS_DB_KEY) ?
     loadFromStorage(IMGS_DB_KEY) :
@@ -54,6 +83,7 @@ function getMeme() {
 }
 
 function getImgs() {
+    // filter
     return gImgs;
 }
 
@@ -66,12 +96,20 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId;
 }
 
-function setLineTxt(input) {
+function setLineTxt(txt) {
     if (gMeme.lines.length === 0) {
         setNewLine(false);
     }
-    gMeme.lines[gMeme.selectedLineIdx].txt = input;
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
     // console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
+}
+
+function setSticker() {
+    gMeme.selectedLineIdx++;
+    gMeme.lines[gMeme.selectedLineIdx].txt = '';
+    // gMeme.lines[gMeme.selectedLineIdx].isSticker = true;
+    console.log(gMeme);
+    console.log(gMeme.selectedLineIdx);
 }
 
 function setColor(input) {
@@ -115,7 +153,9 @@ function setNewLine(addLineIndx = true) {
         fill: 'white',
         xAxis: 250,
         fontFamily: 'impact',
+        isSticker: false,
     };
+    // setLinesPos()
     if (gMeme.selectedLineIdx === 0) {
         gMeme.lines.push({
             ...line,
@@ -154,6 +194,14 @@ function deleteLine() {
     gMeme.selectedLineIdx--;
 }
 
+// changeAlignment(align)
+function changeAlignment(align) {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx];
+    currLine.align = align;
+}
+
+// ***** // CR
+
 function alignLeft() {
     const currLine = gMeme.lines[gMeme.selectedLineIdx];
     currLine.align = 'left';
@@ -181,12 +229,12 @@ function getCurrLineIdx() {
     return gCurrLine;
 }
 
-function changeTxtPos(width, height) {
-    gMeme.lines.forEach((line) => {
-        line.xAxis = width / 2;
-        if (line.yAxis > height) line.yAxis = height - 20;
-    });
-}
+// function changeTxtPos(width, height) {
+//     gMeme.lines.forEach((line) => {
+//         line.xAxis = width / 2;
+//         if (line.yAxis > height) line.yAxis = height - 20;
+//     });
+// }
 
 function doShareMeme(imgDataUrl, onSuccess) {
     const formData = new FormData();
@@ -221,22 +269,26 @@ function saveMeme() {
     saveToStorage(MEMES_DB_KEY, gMemes);
 }
 
+// getSaveMemes
 function getMyImgs() {
     var imgs = loadFromStorage(IMGS_DB_KEY);
     return imgs;
 }
 
+// setFilterBy  - gFilterBy = input value
+
 function filterByKeyWord(elVal) {
-    const filteredImgs = gImgs.filter((img) => {
+    // console.log('filter val', elVal);
+    let filteredImgs = [];
+    gImgs.filter((img) => {
         const keywords = img.keywords;
-        return keywords.includes(elVal);
-        // keyWords.map((keyword) => {
-        //     if (keyword === `${elVal}`) {
-        //         filteredImgs.push(img);
-        //     }
-        // });
+        for (let i = 0; i < keywords.length; i++) {
+            const keyword = keywords[i];
+            if (keyword.includes(elVal)) {
+                filteredImgs.push(img);
+            }
+        }
     });
-    console.log('filteredImgs', filteredImgs);
     return filteredImgs;
 }
 

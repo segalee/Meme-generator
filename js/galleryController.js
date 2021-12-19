@@ -20,13 +20,13 @@ function presentGallery() {
 
 function renderGallery() {
     var imgs = getImgs();
-    var elGallery = document.querySelector('.gallery');
     var strHTML = '';
     imgs.forEach((img, i) => {
         strHTML += ` <img class="pointer img img-${i + 1}" src="img/${
       i + 1
     }.jpg" alt="" onclick="onImgSelect(${i + 1})" />`;
     });
+    var elGallery = document.querySelector('.gallery');
     elGallery.innerHTML = strHTML;
 }
 

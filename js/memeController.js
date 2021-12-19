@@ -22,13 +22,18 @@ function getCanvas() {
 function renderMeme() {
     displayCanvas();
     const meme = getMeme();
+    // drawImg - with onload
+    // drawLines(lines)
     var memeLines = meme.lines;
     memeLines.forEach((line) => {
+        // drawLine - draw one line on text
         drawTxt(line);
-        var selectedLine = meme.lines[meme.selectedLineIdx];
-        var txtVal = selectedLine.txt ? selectedLine.txt : '';
-        document.querySelector(`[name=txt]`).value = txtVal;
+        //
     });
+    // foucsSelectedLine() - focus to selected line
+    var selectedLine = meme.lines[meme.selectedLineIdx];
+    var txtVal = selectedLine.txt ? selectedLine.txt : '';
+    document.querySelector(`[name=txt]`).value = txtVal;
     if (gIsFocusOnTxt) drawRectAroundTxt();
     gIsFocusOnTxt = false;
 }
@@ -58,6 +63,16 @@ function onChangeLineTxt(elInput) {
     var txt = elInput.value;
     setLineTxt(txt);
     renderMeme();
+}
+
+function onDrawSticker(sticker) {
+    // console.log(sticker);
+    // console.log('dsz');
+    setSticker();
+    const { src } = sticker;
+    const stickerImg = new Image();
+    stickerImg.src = `${src}`;
+    gCtx.drawImage(stickerImg, gElCanvas.height / 2, gElCanvas.width / 2);
 }
 
 function drawTxt(line) {
@@ -160,7 +175,7 @@ function onShareMeme() {
 }
 
 function onDownloadMeme(elLink) {
-    gHideFocus = true;
+    // gHideFocus = true;
     onAddNewLine();
     onDeleteLine();
     downloadMeme(elLink);
@@ -189,12 +204,14 @@ function drawRectAroundTxt() {
 // }
 
 // function resizeCanvas() {
-//     const meme = getMeme();
-//     var currImgId = meme.selectedImgId;
-//     const elGallery = document.querySelector('.gallery');
-//     const elImg = elGallery.querySelector(`.img-${currImgId}`);
-//     var ratio = elImg.width / elImg.height;
-//     gElCanvas.width = 450;
-//     gElCanvas.height = gElCanvas.width / ratio;
-//     changeTxtPos(gElCanvas.width, gElCanvas.height);
+//     // const meme = getMeme();
+//     // var currImgId = meme.selectedImgId;
+//     // const elGallery = document.querySelector('.gallery');
+//     // const elImg = elGallery.querySelector(`.img-${currImgId}`);
+//     // var ratio = elImg.width / elImg.height;
+//     // gElCanvas.width = 450;
+//     // gElCanvas.height = gElCanvas.width / ratio;
+//     // changeTxtPos(gElCanvas.width, gElCanvas.height);
+//     const elContainer = document.querySelector('.canvas-container');
+//     gElCanvas.width = elContainer.offsetWidth;
 // }

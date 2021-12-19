@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/82af44d622.js" crossorigin="anonymous"></script>
@@ -65,15 +61,18 @@
     <section class="meme-editor hidden">
         <div class="canvas-container">
             <canvas id="my-canvas" height="450" width="450">
-</canvas>
+            </canvas>
         </div>
         <section class="control-box">
             <!-- grid row1/2 -->
             <input class="line-input" type="text" name="txt" placeholder="Enter your text" oninput="onChangeLineTxt(this)">
             <!-- grid row2/3 -->
-            <button class="change-line-btn switch edit-btn" title="switch lines" onclick="onSwitchBeteenLines()"><i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></button>
-            <button class="change-line-btn add edit-btn" title="add line" onclick="onAddNewLine()"><i class="fas fa-plus"></i></button>
-            <button class="change-line-btn delete edit-btn" title="delete line" onclick="onDeleteLine()"><i class="fas fa-trash-alt"></i></button>
+            <button class="change-line-btn switch edit-btn" title="switch lines" onclick="onSwitchBeteenLines()"><i
+                    class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i></button>
+            <button class="change-line-btn add edit-btn" title="add line" onclick="onAddNewLine()"><i
+                    class="fas fa-plus"></i></button>
+            <button class="change-line-btn delete edit-btn" title="delete line" onclick="onDeleteLine()"><i
+                    class="fas fa-trash-alt"></i></button>
             <button class="change-line-btn up edit-btn fas fa-arrow-down" title="push line down" onclick="onPositionTxtDown()"></button>
             <button class="change-line-btn down edit-btn fas fa-arrow-up" title="lift line up" onclick="onPositionTxtUp()"></button>
             <!-- grid row3/4 -->
@@ -98,7 +97,14 @@
                 <input type="color" name="fill" style="opacity:0; position:absolute; left:0;top:0;width:100%" onchange="onColorChange(this)" />
             </div>
             <!-- grid row5/6 -->
-            <div class="stickers" title="choose a sticker"></div>
+            <div class="stickers" title="choose a sticker">
+                <!-- <img onclick="onDrawSticker(this)" class="sticker" src="stickers/1.png" alt="">
+                <img onclick="onDrawSticker(this)" class="sticker" src="stickers/2.png" alt="">
+                <img onclick="onDrawSticker(this)" class="sticker" src="stickers/3.png" alt="">
+                <img onclick="onDrawSticker(this)" class="sticker" src="stickers/4.png" alt="">
+                <img onclick="onDrawSticker(this)" class="sticker" src="stickers/5.png" alt="">
+                <img onclick="onDrawSticker(this)" class="sticker" src="stickers/6.png" alt=""> -->
+            </div>
             <!-- grid row6/7 -->
             <a class="snd-meme-btn save clean-link" href="#" onclick="onSaveMeme()">Save</a>
             <a class="snd-meme-btn share clean-link" href="#" onclick="onShareMeme()">Share</a>
